@@ -42,7 +42,7 @@ img{
 	text-shadow: none;
 	text-shadow: 0px 0px 2px gray;
 	box-shadow: 0px 0px 7px grey;
-	-webkit-backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(7px); 
 }
 
