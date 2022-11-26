@@ -46,7 +46,7 @@ img{
 }
 	
 .img {
-	-webkit-backdrop-filter: blur(7px);
+	-webkit-filter: blur(7px);
 	backdrop-filter: blur(7px); 
 }
 
