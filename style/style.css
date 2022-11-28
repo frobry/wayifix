@@ -118,6 +118,14 @@ img{
 	font-family: arial;
 	text-shadow: none;
 }
+	
+#titre-accueil-2 {
+	margin-top: 200px;
+	margin-left: 10%;
+	font-size: 220%;
+	font-family: arial;
+	text-shadow: none;
+}
 
 #sous-titre-accueil {
 	margin-top: 25px;
