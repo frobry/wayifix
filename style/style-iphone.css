@@ -139,9 +139,9 @@ img{
 }
 	
 #titre-accueil-2 {
-	margin-top: 300px;
+	margin-top: 500px;
 	margin-left: 10%;
-	font-size: 130%;
+	font-size: 110%;
 	font-family: arial;
 	text-shadow: none;
 }
@@ -204,7 +204,7 @@ div.link:hover {
 }
 
 #tarifs {
-	margin-top: 420px;
+	margin-top: 20px;
 	margin-left: 3%;
 	font-size: 16px;
 	font-family: arial;
