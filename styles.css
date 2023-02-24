@@ -14,13 +14,13 @@ nav {
   display: flex; /* Affiche le menu en ligne par défaut */
 }
 
-@media (max-width: 900px) {
+@media (max-width: 17cm) {
   nav {
     display: none; /* Cache le menu par défaut */
 }
 
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 17cm) {
     .menu-text {
       display: block;
       position: fixed;
