@@ -129,7 +129,7 @@ header {
   background-color: rgb(255, 255, 255);
   border: 3px solid blue;
   border-radius: 13px;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 20);
 }
 
 @media (min-width: 901px) {
