@@ -14,13 +14,13 @@ nav {
   display: flex; /* Affiche le menu en ligne par défaut */
 }
 
-@media (max-width: 17cm) {
+@media (max-width: 900px) {
   nav {
     display: none; /* Cache le menu par défaut */
 }
 
 
-  @media only screen and (max-width: 17cm) {
+  @media only screen and (max-width: 900px) {
     .menu-text {
       display: block;
       position: fixed;
@@ -95,6 +95,41 @@ header {
   margin-left: 7%;
   margin-right: 7%;
   color: rgb(210, 210, 210);
+}
+
+.text-container-2 {
+  text-align: center;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid red;
+  border-radius: 18px;
+  color: rgb(0, 0, 0);
+}
+
+.text-container-3 {
+  display: inline-block;
+  z-index: 1;
+  text-align: center;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid gray;
+  border-radius: 18px;
+  color: rgb(0, 0, 0);
+}
+
+.button-container {
+  display: inline-block;
+  z-index: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid blue;
+  border-radius: 13px;
+  color: rgb(0, 0, 0);
 }
 
 @media (min-width: 901px) {
