@@ -400,6 +400,10 @@ section#services .back-blur {
   display: inline-block;
 }
 
+.form {
+  margin-top: -50px;
+}
+
 .space-service {
   margin-top: 60px;
   margin-bottom: 0px;
