@@ -165,6 +165,38 @@ body {
   z-index: -1;
 }
 
+.animation {
+  animation: fade-in 7s;
+}
+
+.animation-2 {
+  animation: fade-in 12s;
+}
+
+.page-transition {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.page-transition.fade-out {
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  from {
+    transform: scale(0.9); /* Démarre à une échelle normale */
+  }
+  to {
+    transform: scale(1.0); /* Termine à une échelle agrandie de 20% */
+  }
+}
+
 .index {
   margin-top: 50px;
   font-size: 2.5em;
