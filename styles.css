@@ -102,9 +102,9 @@ header {
   margin-left: -24;
   margin-right: -24;
   padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: rgba(20, 20, 20, 0.9);
-  border-top: 0.5px solid darkred;
-  border-bottom: 0.5px solid darkred;
   color: rgb(230, 230, 230);
 }
 
@@ -126,6 +126,9 @@ header {
   z-index: 1;
   text-align: center;
   padding: 18px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
   background-color: #5ce1e6;
   border-radius: 23px;
   color: rgb(0, 0, 0);
