@@ -147,7 +147,7 @@ header {
 
 /* Mise en forme générale */
 body {
-  font-family: arial, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: rgb(0, 0, 0);
   color: #fff;
   background-attachment: fixed;
@@ -341,13 +341,18 @@ main {
   margin-top: -80px;
 }
 
+main h1 {
+  font-family: Orkney, sans-serif;
+}
+
 .welcome-message {
   position: fixed;
   z-index: -1;
+  font-family: Orkney, sans-serif;
   text-align: center; /* Centre le message */
   padding: 30px; /* Ajoute de l'espace autour du message */
-  font-size: 23px;
-  margin-top: 40px;
+  font-size: calc(1700vw / 1018);
+  margin-top: 60px;
   margin-right: -300px;
   top: 50%;
   left: 50%;
