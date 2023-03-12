@@ -99,13 +99,23 @@ header {
 
 .text-container-2 {
   text-align: center;
-  margin-left: -24;
-  margin-right: -24;
+  margin-left: 17%;
+  margin-right: 17%;
+  border-radius: 48px;
   padding: 20px;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 30px;
+  box-shadow: 0px 0px 80px 5px rgba(225, 225, 225, 0.3);
   background-color: rgba(20, 20, 20, 0.9);
   color: rgb(230, 230, 230);
+}
+
+.text-container-2 b {
+  font-size: calc(2000vw / 1018);
+}
+
+.text-container-2 p {
+  font-size: calc(1200vw / 1018);
 }
 
 .text-container-3 {
@@ -119,6 +129,14 @@ header {
   border: 1px solid gray;
   border-radius: 38px;
   color: rgb(230, 230, 230);
+}
+
+.text-container-big {
+  text-align: center;
+  margin-left: 7%;
+  margin-right: 7%;
+  font-size: calc(1700vw / 1018);
+  color: rgb(210, 210, 210);
 }
 
 .button-container {
@@ -157,10 +175,10 @@ body {
 }
 
 @font-face {
-  font-family: Orkney;
+  font-family: "Orkney", sans-serif;
   src: url('orkney/Orkney Regular.ttf') format('truetype');
   font-weight: normal;
-  font-style: normal;
+  font-style: none;
 }
 
 #background-video {
@@ -477,7 +495,7 @@ section#services .service img {
 
 section#services .back-blur {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.0);
+  background-color: rgba(175, 175, 175, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 1;
@@ -489,10 +507,8 @@ section#services .back-blur {
   margin-right: 40px;
   margin-top: 30px;
   margin-bottom: 50px;
-  box-shadow: 0px 0px 18px #000;
-  border-radius: 18px;
-  border-color: white;
-  border: 0.9px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 0px 18px #444;
+  border-radius: 28px;
   margin: 20px;
   display: inline-block;
 }
@@ -614,7 +630,7 @@ section#services .images-container .service {
 .referral-program {
   text-align: center; /* Centre le message */
   padding: 20px; /* Ajoute de l'espace autour du message */
-  font-size: 20px; /* change la taille de police */
+  font-size: calc(1500vw / 1018); /* change la taille de police */
   color: #fff; /* Change la couleur de police */
 }
 
@@ -746,6 +762,7 @@ footer p {
 
 .menu2{
   margin-top: 100px;
+  text-align: center;
 }
 
 section#products .back-blur {
@@ -879,26 +896,6 @@ select {
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
   border-radius: 13px;
-}
-
-.back-blur {
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 1;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 3px;
-  padding-bottom: 30px;
-  margin-left: 80px;
-  margin-right: 80px;
-  margin-top: 20px;
-  margin-bottom: 120px;
-  box-shadow: 0px 0px 25px #000;
-  border-radius: 18px;
-  border-color: white;
-  border: 0.9px solid rgba(255, 255, 255, 0.4);
 }
 
 .form {
