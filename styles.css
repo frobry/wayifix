@@ -495,7 +495,7 @@ section#services .service img {
 
 section#services .back-blur {
   position: relative;
-  background-color: rgba(175, 175, 175, 0.1);
+  background-color: rgba(125, 125, 125, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 1;
