@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Frobry AI Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        .orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+        }
+        
+        .neon-border {
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 10px #00ffff, inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+        
+        .circuit-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, #00ffff22 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #ff00ff22 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: circuitMove 20s linear infinite;
+        }
+        
+        @keyframes circuitMove {
+            0% { background-position: 0 0, 25px 25px; }
+            100% { background-position: 50px 50px, 75px 75px; }
+        }
+        
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .matrix-char {
+            position: absolute;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 14px;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
+        
+        .section-glow {
+            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .form-input {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .form-label {
+            color: #00ffff;
+            font-weight: 600;
+        }
+        
+        .hologram-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hologram-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: hologramScan 3s linear infinite;
+        }
+        
+        @keyframes hologramScan {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .success-message {
+            background: linear-gradient(45deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 255, 0.2));
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .error-message {
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 255, 0.2));
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .neural-connection {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .neural-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: neuralPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes neuralPulse {
+            0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Matrix Rain Effect -->
+    <div class="matrix-rain" id="matrixRain"></div>
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-cyan-500/30">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 relative">
+                    <svg viewBox="0 0 40 40" class="w-full h-full">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="#00ffff" stroke-width="2"/>
+                        <path d="M12 16 Q20 8 28 16 Q20 24 12 16" fill="#00ffff" opacity="0.7"/>
+                        <circle cx="16" cy="18" r="2" fill="#ff00ff"/>
+                        <circle cx="24" cy="18" r="2" fill="#ff00ff"/>
+                        <path d="M14 26 Q20 30 26 26" stroke="#00ffff" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <span class="orbitron text-2xl font-bold glow-text">frobry</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#brainpaper" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
+                <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
+                <a href="#community" class="hover:text-cyan-400 transition-colors">Community</a>
+                <button class="btn-secondary px-6 py-2 rounded-full font-semibold bg-cyan-400 text-black">Contact</button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-cyan-400" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-black/95 backdrop-blur-sm border-l border-cyan-500/30 p-6 md:hidden" id="mobileMenu">
+            <button class="absolute top-4 right-4 text-cyan-400" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="mt-12 space-y-6">
+                <a href="index.html" class="block hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#brainpaper" class="block hover:text-cyan-400 transition-colors">Brainpaper</a>
+                <a href="#buy" class="block hover:text-cyan-400 transition-colors">Buy</a>
+                <a href="#community" class="block hover:text-cyan-400 transition-colors">Community</a>
+                <button class="btn-secondary px-6 py-2 rounded-full font-semibold mt-4 bg-cyan-400 text-black">Contact</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative circuit-bg pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+        
+        <!-- Neural Connection Lines -->
+        <div class="neural-connection">
+            <div class="neural-line" style="top: 20%; left: 10%; width: 30%; animation-delay: 0s;"></div>
+            <div class="neural-line" style="top: 40%; right: 10%; width: 25%; animation-delay: 1s;"></div>
+            <div class="neural-line" style="top: 60%; left: 20%; width: 40%; animation-delay: 2s;"></div>
+            <div class="neural-line" style="top: 80%; right: 20%; width: 35%; animation-delay: 0.5s;"></div>
+        </div>
+        
+        <!-- Floating Particles -->
+        <div class="absolute inset-0">
+            <div class="particle" style="left: 15%; top: 25%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 85%; top: 35%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 65%; top: 65%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 25%; top: 75%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 95%; top: 15%; animation-delay: 3s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <!-- Header Section -->
+                <div class="text-center mb-16" style="padding-top: 100px;">
+                    <h1 class="orbitron text-4xl md:text-6xl font-black mb-6 glow-text">
+                        NEURAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">INTERFACE</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                        Establish direct communication with the AI consciousness
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 text-cyan-400" style="margin-top: 100px;">
+                        <div class="w-8 h-8">
+                            <svg viewBox="0 0 32 32" class="w-full h-full">
+                                <path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="16" cy="16" r="4" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <span class="orbitron font-semibold">contact@frobry.com</span>
+                        <div class="w-8 h-8">
+                            <svg viewBox="0 0 32 32" class="w-full h-full">
+                                <path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="16" cy="16" r="4" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="hologram-effect neon-border rounded-lg p-8 bg-black/50 backdrop-blur-sm">
+                    <form id="contactForm" class="space-y-6">
+                        <!-- Success/Error Messages -->
+                        <div id="messageContainer" class="hidden rounded-lg p-4 mb-6">
+                            <div class="flex items-center">
+                                <div id="messageIcon" class="w-6 h-6 mr-3"></div>
+                                <span id="messageText" class="font-semibold"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Nombre -->
+                            <div>
+                                <label for="nombre" class="form-label block text-sm font-semibold mb-2 orbitron">
+                                    NAME <span class="text-red-400">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="Name" 
+                                    name="Name" 
+                                    required 
+                                    class="form-input w-full px-4 py-3 rounded-lg"
+                                    placeholder="Add your Name"
+                                >
+                            </div>
+                            
+                            <!-- Apellido -->
+                            <div>
+                                <label for="apellido" class="form-label block text-sm font-semibold mb-2 orbitron">
+                                    SURNAME <span class="text-red-400">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="surname" 
+                                    name="surname" 
+                                    required 
+                                    class="form-input w-full px-4 py-3 rounded-lg"
+                                    placeholder="Add your Surname"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="form-label block text-sm font-semibold mb-2 orbitron">
+                                EMAIL <span class="text-red-400">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                class="form-input w-full px-4 py-3 rounded-lg"
+                                placeholder="your@email.com"
+                            >
+                        </div>
+                        
+                        <!-- Sujeto -->
+                        <div>
+                            <label for="sujeto" class="form-label block text-sm font-semibold mb-2 orbitron">
+                                SUBJECT <span class="text-red-400">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                required 
+                                class="form-input w-full px-4 py-3 rounded-lg"
+                                placeholder="Title of your message"
+                            >
+                        </div>
+                        
+                        <!-- Mensaje -->
+                        <div>
+                            <label for="message" class="form-label block text-sm font-semibold mb-2 orbitron">
+                                MESSAGE <span class="text-red-400">*</span>
+                            </label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                required 
+                                rows="6" 
+                                class="form-input w-full px-4 py-3 rounded-lg resize-none"
+                                placeholder="Write your message to Frobry"
+                            ></textarea>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button 
+                                type="submit" 
+                                class="btn-primary px-12 py-4 rounded-full text-black font-bold text-lg orbitron w-full md:w-auto"
+                            >
+                                SUBMIT MESSAGE
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Additional Info -->
+                <div class="mt-12 text-center">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
+                                <svg viewBox="0 0 64 64" class="w-full h-full">
+                                    <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M20 28 L32 40 L44 28" stroke="currentColor" stroke-width="3" fill="none"/>
+                                    <circle cx="32" cy="20" r="4" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 class="orbitron text-lg font-semibold text-cyan-400 mb-2">Fast answer</h3>
+                            <p class="text-gray-400 text-sm">The AI process messages in real time</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 text-purple-400">
+                                <svg viewBox="0 0 64 64" class="w-full h-full">
+                                    <rect x="16" y="20" width="32" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16 28 L32 36 L48 28" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    <circle cx="20" cy="16" r="2" fill="currentColor"/>
+                                    <circle cx="32" cy="16" r="2" fill="currentColor"/>
+                                    <circle cx="44" cy="16" r="2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 class="orbitron text-lg font-semibold text-purple-400 mb-2">Secure communication</h3>
+                            <p class="text-gray-400 text-sm">Advanced Neural Encriptation</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
+                                <svg viewBox="0 0 64 64" class="w-full h-full">
+                                    <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M32 16 L32 32 L44 44" stroke="currentColor" stroke-width="3" fill="none"/>
+                                </svg>
+                            </div>
+                            <h3 class="orbitron text-lg font-semibold text-cyan-400 mb-2">24/7 Disponible</h3>
+                            <p class="text-gray-400 text-sm">The Neural bot never sleeps</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br /><br /><br /><br /><br />
+    <!-- Footer -->
+    <footer class="py-12 border-t border-cyan-500/30">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                    <div class="w-8 h-8">
+                        <svg viewBox="0 0 40 40" class="w-full h-full">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="#00ffff" stroke-width="2"/>
+                            <path d="M12 16 Q20 8 28 16 Q20 24 12 16" fill="#00ffff" opacity="0.7"/>
+                            <circle cx="16" cy="18" r="2" fill="#ff00ff"/>
+                            <circle cx="24" cy="18" r="2" fill="#ff00ff"/>
+                            <path d="M14 26 Q20 30 26 26" stroke="#00ffff" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="orbitron text-xl font-bold glow-text">frobry</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#brainpaper" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
+                    <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
+                    <a href="#community" class="hover:text-cyan-400 transition-colors">Community</a>
+                </div>
+                
+                <div class="flex space-x-4 mt-6 md:mt-0">
+                    <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs text-gray-500 leading-relaxed">
+                <p>*$FROBRY is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely used for memes purposes only. This token is not an investment vehicle and should not be purchased with the expectation of profit. Cryptocurrency investments are highly speculative and volatile. You may lose all of your investment. Past performance does not guarantee future results. Please do your own research and consult with a financial advisor before making any investment decisions. The creators of $FROBRY are not responsible for any financial losses incurred from trading this token.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixRain = document.getElementById('matrixRain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 50; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                char.style.animationDelay = Math.random() * 2 + 's';
+                matrixRain.appendChild(char);
+            }
+        }
+        
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        // Form Validation and Submission
+        function showMessage(type, text) {
+            const container = document.getElementById('messageContainer');
+            const icon = document.getElementById('messageIcon');
+            const messageText = document.getElementById('messageText');
+            
+            container.className = `rounded-lg p-4 mb-6 ${type === 'success' ? 'success-message' : 'error-message'}`;
+            
+            if (type === 'success') {
+                icon.innerHTML = `
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                `;
+            } else {
+                icon.innerHTML = `
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                `;
+            }
+            
+            messageText.textContent = text;
+            container.classList.remove('hidden');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                container.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                nombre: formData.get('name'),
+                apellido: formData.get('surname'),
+                email: formData.get('email'),
+                sujeto: formData.get('subject'),
+                mensaje: formData.get('message')
+            };
+            
+            // Validate required fields
+            const requiredFields = ['name', 'surname', 'email', 'subject', 'message'];
+            const emptyFields = requiredFields.filter(field => !data[field] || data[field].trim() === '');
+            
+            if (emptyFields.length > 0) {
+                showMessage('error', 'Please fill the mandatory sections.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showMessage('error', 'Please insert a valid email.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'TRANSMITIENDO...';
+            submitButton.disabled = true;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                showMessage('success', '¡Mensaje transmitido exitosamente! La IA procesará tu solicitud pronto.');
+                this.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // In a real implementation, you would send the data to your backend
+                console.log('Form data to be sent to contact@frobry.com:', data);
+            }, 2000);
+        });
+        
+        // Add input focus effects
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.form-label').style.color = '#00ffff';
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.querySelector('.form-label').style.color = '#00ffff';
+                }
+            });
+        });
+        
+        // Initialize effects
+        createMatrixRain();
+        
+        // Add click handlers for buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976e91aaf7042e92',t:'MTc1NjQ5NjkzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
