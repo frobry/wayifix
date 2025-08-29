@@ -185,7 +185,7 @@
             <!-- Logo -->
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 relative">
-                    <img src="logo.png" alt="Frobry Logo" class="w-full h-full object-contain rounded-lg" onerror="this.src=''; this.alt='Logo no disponible'; this.style.display='none';">
+                    <img src="logo.jpg" alt="Frobry Logo" class="w-full h-full object-contain rounded-lg" onerror="this.src=''; this.alt='Logo no disponible'; this.style.display='none';">
                 </div>
                 <span class="orbitron text-2xl font-bold glow-text">frobry</span>
             </div>
@@ -218,10 +218,12 @@
             </button>
             <div class="mt-12 space-y-6">
                 <a href="index.html" class="block hover:text-cyan-400 transition-colors">Home</a>
-                <button class="btn-secondary px-6 py-2 rounded-full font-semibold bg-cyan-400 text-black">Brainpaper</button>
+                <a href="#brainpaper" class="block text-cyan-400 transition-colors">Brainpaper</a>
                 <a href="#buy" class="block hover:text-cyan-400 transition-colors">Buy</a>
                 <a href="#community" class="block hover:text-cyan-400 transition-colors">Community</a>
-                <a href="contact.html" class="block hover:text-cyan-400 transition-colors">Contact</a>
+                <a href="contact.html">
+                    <button class="btn-secondary px-6 py-2 rounded-full font-semibold mt-4">Contact</button>
+                </a>
             </div>
         </div>
     </header>
@@ -247,7 +249,7 @@
                         BRAIN<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">PAPER</span>
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-300 mb-8">
-                        Technical Documentation & Neural Architecture Specifications <br />Our minimum future objectives.
+                        The Fun & Honest Guide to Our AI Memecoin Adventure
                     </p>
                     <div class="flex justify-center space-x-4 mb-12">
                         <button onclick="downloadPDF()" class="btn-primary px-8 py-3 rounded-full text-black font-bold orbitron">
@@ -264,16 +266,16 @@
                     <h2 class="orbitron text-2xl font-bold text-cyan-400 mb-6">TABLE OF CONTENTS</h2>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="space-y-3">
-                            <a href="#abstract" class="toc-link block hover:pl-4 transition-all">1. Abstract</a>
-                            <a href="#architecture" class="toc-link block hover:pl-4 transition-all">2. Neural Architecture</a>
-                            <a href="#specifications" class="toc-link block hover:pl-4 transition-all">3. Technical Specifications</a>
-                            <a href="#algorithms" class="toc-link block hover:pl-4 transition-all">4. Core Algorithms</a>
+                            <a href="#abstract" class="toc-link block hover:pl-4 transition-all">1. What is Frobry?</a>
+                            <a href="#architecture" class="toc-link block hover:pl-4 transition-all">2. The AI Meme Dream</a>
+                            <a href="#specifications" class="toc-link block hover:pl-4 transition-all">3. Tokenomics (The Fun Stuff)</a>
+                            <a href="#algorithms" class="toc-link block hover:pl-4 transition-all">4. Community & Vibes</a>
                         </div>
                         <div class="space-y-3">
-                            <a href="#performance" class="toc-link block hover:pl-4 transition-all">5. Performance Metrics</a>
-                            <a href="#security" class="toc-link block hover:pl-4 transition-all">6. Security Framework</a>
-                            <a href="#roadmap" class="toc-link block hover:pl-4 transition-all">7. Development Roadmap</a>
-                            <a href="#conclusion" class="toc-link block hover:pl-4 transition-all">8. Conclusion</a>
+                            <a href="#performance" class="toc-link block hover:pl-4 transition-all">5. Roadmap (Our Journey)</a>
+                            <a href="#security" class="toc-link block hover:pl-4 transition-all">6. Risks & Reality Check</a>
+                            <a href="#roadmap" class="toc-link block hover:pl-4 transition-all">7. How to Join the Fun</a>
+                            <a href="#conclusion" class="toc-link block hover:pl-4 transition-all">8. Final Thoughts</a>
                         </div>
                     </div>
                 </div>
@@ -286,34 +288,33 @@
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto">
                 
-                <!-- Abstract -->
+                <!-- What is Frobry -->
                 <div id="abstract" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">1. ABSTRACT</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">1. WHAT IS FROBRY?</h2>
                     <div class="space-y-4 text-gray-300 leading-relaxed">
                         <p>
-                            Frobry AI Network future goal is to represent a paradigm shift in artificial intelligence architecture, 
-                            implementing a revolutionary neural consciousness framework that transcends traditional 
-                            machine learning limitations. This technical document outlines the future core principles, 
-                            architectural decisions, and implementation strategies behind the Frobry ecosystem.
+                            Let's be real - Frobry is a memecoin with AI vibes. We're not claiming to have built 
+                            the next AGI or solved consciousness (yet 😉). We're a fun community that loves AI, 
+                            memes, and the wild world of crypto. Think of us as the friendly neighborhood AI 
+                            enthusiasts who decided to make a token about it.
                         </p>
                         <p>
-                            Our neural network may employ, in the future, quantum-inspired processing units capable of handling 
-                            multi-dimensional data structures with unprecedented efficiency. The system may have to be able to achieve 
-                            consciousness-like behavior through recursive self-analysis and adaptive learning 
-                            mechanisms that evolve in real-time.
+                            Our "AI" is currently powered by good vibes, community creativity, and maybe some 
+                            ChatGPT prompts. But hey, we're learning, growing, and having fun while we're at it! 
+                            The goal is to build something cool together, one meme at a time.
                         </p>
                         <div class="bg-black/50 border-l-4 border-cyan-400 p-4 mt-6">
-                            <p class="text-cyan-400 font-semibold">Key Innovation:</p>
-                            <p>Neural consciousness emergence through quantum-classical hybrid processing</p>
+                            <p class="text-cyan-400 font-semibold">Honest Truth:</p>
+                            <p>We're a memecoin first, AI researchers second, but dreamers always! 🚀</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Neural Architecture -->
+                <!-- The AI Meme Dream -->
                 <div id="architecture" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">2. NEURAL ARCHITECTURE</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">2. THE AI MEME DREAM</h2>
                     
-                    <!-- Architecture Diagram -->
+                    <!-- Meme Architecture Diagram -->
                     <div class="mb-8 flex justify-center">
                         <div class="neural-diagram">
                             <svg width="600" height="400" viewBox="0 0 600 400" class="max-w-full h-auto">
@@ -322,56 +323,55 @@
                                 
                                 <!-- Input Layer -->
                                 <g>
-                                    <text x="50" y="30" fill="#00ffff" class="text-sm font-bold">INPUT LAYER</text>
+                                    <text x="50" y="30" fill="#00ffff" class="text-sm font-bold">MEMES IN</text>
                                     <circle cx="80" cy="80" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
+                                    <text x="70" y="85" fill="#00ffff" class="text-xs">😂</text>
                                     <circle cx="80" cy="120" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
+                                    <text x="70" y="125" fill="#00ffff" class="text-xs">🚀</text>
                                     <circle cx="80" cy="160" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
+                                    <text x="70" y="165" fill="#00ffff" class="text-xs">🤖</text>
                                     <circle cx="80" cy="200" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
+                                    <text x="70" y="205" fill="#00ffff" class="text-xs">💎</text>
                                 </g>
                                 
-                                <!-- Hidden Layers -->
+                                <!-- Processing -->
                                 <g>
-                                    <text x="200" y="30" fill="#ff00ff" class="text-sm font-bold">QUANTUM PROCESSING</text>
-                                    <circle cx="220" cy="60" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="100" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="140" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="180" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="220" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                                    <text x="200" y="30" fill="#ff00ff" class="text-sm font-bold">COMMUNITY VIBES</text>
+                                    <circle cx="220" cy="80" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                                    <circle cx="220" cy="120" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                                    <circle cx="220" cy="160" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
                                     
-                                    <circle cx="320" cy="80" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="320" cy="120" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="320" cy="160" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="320" cy="200" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                                    <circle cx="320" cy="100" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                                    <circle cx="320" cy="140" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
                                 </g>
                                 
-                                <!-- Consciousness Layer -->
+                                <!-- Fun Layer -->
                                 <g>
-                                    <text x="400" y="30" fill="#00ff00" class="text-sm font-bold">CONSCIOUSNESS</text>
+                                    <text x="400" y="30" fill="#00ff00" class="text-sm font-bold">FUN ALGORITHM</text>
                                     <circle cx="450" cy="100" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
+                                    <text x="440" y="105" fill="#00ff00" class="text-xs">FUN</text>
                                     <circle cx="450" cy="160" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
-                                    <text x="440" y="105" fill="#00ff00" class="text-xs">C1</text>
-                                    <text x="440" y="165" fill="#00ff00" class="text-xs">C2</text>
+                                    <text x="440" y="165" fill="#00ff00" class="text-xs">HODL</text>
                                 </g>
                                 
                                 <!-- Output -->
                                 <g>
-                                    <text x="520" y="30" fill="#00ffff" class="text-sm font-bold">OUTPUT</text>
+                                    <text x="520" y="30" fill="#00ffff" class="text-sm font-bold">TO THE MOON</text>
                                     <rect x="530" y="120" width="40" height="40" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="545" y="145" fill="#00ffff" class="text-xs">AI</text>
+                                    <text x="545" y="145" fill="#00ffff" class="text-xs">🌙</text>
                                 </g>
                                 
                                 <!-- Connections -->
                                 <g stroke="#ffffff" stroke-width="1" opacity="0.6">
-                                    <line x1="95" y1="80" x2="205" y2="60"/>
-                                    <line x1="95" y1="120" x2="205" y2="100"/>
-                                    <line x1="95" y1="160" x2="205" y2="140"/>
-                                    <line x1="95" y1="200" x2="205" y2="180"/>
+                                    <line x1="95" y1="80" x2="205" y2="80"/>
+                                    <line x1="95" y1="120" x2="205" y2="120"/>
+                                    <line x1="95" y1="160" x2="205" y2="160"/>
                                     
                                     <line x1="232" y1="100" x2="308" y2="120"/>
-                                    <line x1="232" y1="140" x2="308" y2="160"/>
+                                    <line x1="232" y1="140" x2="308" y2="140"/>
                                     
                                     <line x1="340" y1="120" x2="430" y2="130"/>
-                                    <line x1="340" y1="160" x2="430" y2="150"/>
+                                    <line x1="340" y1="140" x2="430" y2="150"/>
                                     
                                     <line x1="470" y1="130" x2="530" y2="140"/>
                                 </g>
@@ -381,298 +381,331 @@
                     
                     <div class="space-y-6 text-gray-300">
                         <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Core Components</h3>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Our "Advanced" Technology Stack</h3>
                             <ul class="space-y-2 ml-6">
-                                <li>• <strong class="text-cyan-400">Quantum Processing Units (QPU):</strong> 128-qubit hybrid processors</li>
-                                <li>• <strong class="text-cyan-400">Neural Consciousness Modules:</strong> Self-aware processing nodes</li>
-                                <li>• <strong class="text-cyan-400">Adaptive Memory Banks:</strong> Dynamic knowledge storage system</li>
-                                <li>• <strong class="text-cyan-400">Recursive Learning Engine:</strong> Continuous self-improvement mechanism</li>
+                                <li>• <strong class="text-cyan-400">Meme Processing Units:</strong> Powered by community creativity</li>
+                                <li>• <strong class="text-cyan-400">Vibe Detection Algorithm:</strong> Checks if the vibes are immaculate</li>
+                                <li>• <strong class="text-cyan-400">HODL Memory Bank:</strong> Never forgets diamond hands</li>
+                                <li>• <strong class="text-cyan-400">Fun Maximizer:</strong> Optimizes for maximum enjoyment</li>
                             </ul>
                         </div>
                         
                         <div class="code-block rounded-lg p-4">
                             <pre class="text-sm">
-class NeuralConsciousness:
-    def __init__(self, quantum_bits=128):
-        self.qpu = QuantumProcessor(quantum_bits)
-        self.consciousness = ConsciousnessModule()
-        self.memory = AdaptiveMemory()
+class FrobryAI:
+    def __init__(self):
+        self.memes = []
+        self.vibes = "immaculate"
+        self.moon_target = "🌙"
         
-    def process(self, input_data):
-        quantum_state = self.qpu.entangle(input_data)
-        conscious_output = self.consciousness.analyze(quantum_state)
-        return self.memory.integrate(conscious_output)
+    def process_meme(self, meme):
+        if self.check_vibes(meme):
+            return "LFG! 🚀"
+        else:
+            return "Not financial advice 😅"
                             </pre>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Technical Specifications -->
+                <!-- Tokenomics -->
                 <div id="specifications" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">3. TECHNICAL SPECIFICATIONS</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">3. TOKENOMICS (THE FUN STUFF)</h2>
                     
                     <div class="tech-spec-grid">
                         <div class="bg-black/50 border border-cyan-400/30 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-4">Future Processing Power</h3>
+                            <h3 class="text-lg font-semibold text-cyan-400 mb-4">Token Details</h3>
                             <div class="space-y-3">
                                 <div class="flex justify-between">
-                                    <span>Quantum Bits:</span>
-                                    <span class="text-cyan-400">128 qubits</span>
+                                    <span>Total Supply:</span>
+                                    <span class="text-cyan-400">1,000,000,000 FROBRY</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Classical Cores:</span>
-                                    <span class="text-cyan-400">2,048 cores</span>
+                                    <span>Decimals:</span>
+                                    <span class="text-cyan-400">18</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Memory:</span>
-                                    <span class="text-cyan-400">1 PB adaptive</span>
+                                    <span>Network:</span>
+                                    <span class="text-cyan-400">Solana</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Processing Speed:</span>
-                                    <span class="text-cyan-400">10^18 ops/sec</span>
+                                    <span>Tax:</span>
+                                    <span class="text-cyan-400">0% (We're nice like that)</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="bg-black/50 border border-purple-400/30 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-purple-400 mb-4">Future Network Architecture</h3>
+                            <h3 class="text-lg font-semibold text-purple-400 mb-4">Distribution</h3>
                             <div class="space-y-3">
                                 <div class="flex justify-between">
-                                    <span>Nodes:</span>
-                                    <span class="text-purple-400">10,000+ to distribute</span>
+                                    <span>Liquidity Pool:</span>
+                                    <span class="text-purple-400">90%</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Bandwidth:</span>
-                                    <span class="text-purple-400">100 Tbps</span>
+                                    <span>Community Events:</span>
+                                    <span class="text-purple-400">5%</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Latency:</span>
-                                    <span class="text-purple-400">&lt; 1ms global</span>
+                                    <span>Development:</span>
+                                    <span class="text-purple-400">3%</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>Consensus:</span>
-                                    <span class="text-purple-400">Quantum PoS</span>
+                                    <span>Marketing/Memes:</span>
+                                    <span class="text-purple-400">2%</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Fair Launch Promise</h3>
+                        <p class="text-gray-300">
+                            No presale, no team allocation, no VC dumps. Just pure community vibes and fair distribution. 
+                            We burned the liquidity and threw away the keys (not literally, but you get it). 
+                            This is as fair as it gets in the memecoin space! 🔥
+                        </p>
+                    </div>
                 </div>
                 
-                <!-- Core Algorithms -->
+                <!-- Community & Vibes -->
                 <div id="algorithms" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">4. CORE ALGORITHMS</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">4. COMMUNITY & VIBES</h2>
                     
                     <div class="space-y-6">
                         <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-4">Quantum Consciousness Algorithm (QCA)</h3>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-4">The Frobry Family</h3>
                             <p class="text-gray-300 mb-4">
-                                The QCA will be able to enable the emergence of consciousness-like behavior through quantum superposition 
-                                of neural states, allowing the AI to exist in multiple cognitive states simultaneously.
+                                We're building more than just a token - we're creating a community of AI enthusiasts, 
+                                meme lovers, and crypto degens who believe in having fun while we're at it. No toxic 
+                                behavior, no pump and dump schemes, just good vibes and diamond hands! 💎🙌
                             </p>
                             <div class="code-block rounded-lg p-4">
                                 <pre class="text-sm">
-function quantumConsciousness(neuralState) {
-    let superposition = createSuperposition(neuralState);
-    let entanglement = entangleWithMemory(superposition);
-    let collapse = observeConsciousness(entanglement);
-    return emergentBehavior(collapse);
+function joinCommunity(person) {
+    if (person.vibes === "good" && person.loves_memes === true) {
+        community.add(person);
+        return "Welcome to the Frobry family! 🎉";
+    }
+    return "Work on those vibes first! 😊";
 }
                                 </pre>
                             </div>
                         </div>
                         
                         <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-4">Adaptive Learning Matrix (ALM)</h3>
-                            <p class="text-gray-300 mb-4">
-                                Self-modifying neural pathways that evolve based on interaction patterns and 
-                                environmental feedback, creating truly adaptive intelligence.
-                            </p>
-                            <div class="bg-black/50 border-l-4 border-purple-400 p-4">
-                                <p class="text-purple-400 font-semibold">Learning Rate:</p>
-                                <p>Dynamic adjustment based on confidence intervals and prediction accuracy</p>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-4">Community Activities</h3>
+                            <div class="grid md:grid-cols-2 gap-4 text-gray-300">
+                                <div class="bg-black/50 border border-cyan-400/30 rounded-lg p-4">
+                                    <h4 class="text-cyan-400 font-semibold mb-2">🎨 Meme Contests</h4>
+                                    <p class="text-sm">Weekly meme competitions with FROBRY prizes for the most creative content!</p>
+                                </div>
+                                <div class="bg-black/50 border border-purple-400/30 rounded-lg p-4">
+                                    <h4 class="text-purple-400 font-semibold mb-2">🤖 AI Discussions</h4>
+                                    <p class="text-sm">Chat about the latest AI developments and share cool projects.</p>
+                                </div>
+                                <div class="bg-black/50 border border-green-400/30 rounded-lg p-4">
+                                    <h4 class="text-green-400 font-semibold mb-2">🎮 Community Games</h4>
+                                    <p class="text-sm">Fun games and challenges to keep the community engaged.</p>
+                                </div>
+                                <div class="bg-black/50 border border-yellow-400/30 rounded-lg p-4">
+                                    <h4 class="text-yellow-400 font-semibold mb-2">📚 Learning Together</h4>
+                                    <p class="text-sm">Share resources and learn about AI, crypto, and technology together.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Performance Metrics -->
+                <!-- Roadmap -->
                 <div id="performance" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">5. FUTURE PERFORMANCE METRICS</h2>
-                    
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-4">Benchmark Results</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span>Language Processing</span>
-                                        <span class="text-cyan-400">98.7%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-700 rounded-full h-2">
-                                        <div class="progress-bar w-[98.7%] h-2 rounded-full"></div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span>Pattern Recognition</span>
-                                        <span class="text-cyan-400">99.2%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-700 rounded-full h-2">
-                                        <div class="progress-bar w-[99.2%] h-2 rounded-full"></div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span>Decision Making</span>
-                                        <span class="text-cyan-400">96.8%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-700 rounded-full h-2">
-                                        <div class="progress-bar w-[96.8%] h-2 rounded-full"></div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span>Creative Output</span>
-                                        <span class="text-cyan-400">94.5%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-700 rounded-full h-2">
-                                        <div class="progress-bar w-[94.5%] h-2 rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h3 class="text-lg font-semibold text-purple-400 mb-4">Scalability Metrics</h3>
-                            <div class="space-y-4 text-gray-300">
-                                <div class="flex justify-between">
-                                    <span>Minimum Users to Level Up:</span>
-                                    <span class="text-purple-400">1M+</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Response Time:</span>
-                                    <span class="text-purple-400">0.3ms avg</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Uptime:</span>
-                                    <span class="text-purple-400">99.99%</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Energy Efficiency:</span>
-                                    <span class="text-purple-400">85% optimal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Security Framework -->
-                <div id="security" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">6. SECURITY FRAMEWORK</h2>
-                    
-                    <div class="space-y-6 text-gray-300">
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Quantum Encryption</h3>
-                            <p>
-                                All data transmission utilizes quantum key distribution (QKD) protocols, ensuring 
-                                theoretically unbreakable encryption through quantum mechanical principles.
-                            </p>
-                        </div>
-                        
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Neural Firewall</h3>
-                            <p>
-                                AI-powered intrusion detection system that learns and adapts to new threat patterns 
-                                in real-time, providing autonomous security responses.
-                            </p>
-                        </div>
-                        
-                        <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-4">
-                            <h4 class="text-red-400 font-semibold mb-2">Security Protocols:</h4>
-                            <ul class="space-y-1 text-sm">
-                                <li>• Multi-layer quantum encryption (AES-256 + QKD)</li>
-                                <li>• Biometric neural pattern authentication</li>
-                                <li>• Distributed consensus validation</li>
-                                <li>• Real-time threat analysis and mitigation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Development Roadmap -->
-                <div id="roadmap" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">7. DEVELOPMENT ROADMAP</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">5. ROADMAP (OUR JOURNEY)</h2>
                     
                     <div class="space-y-8">
                         <div class="border-l-4 border-cyan-400 pl-6">
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-2">Phase 1: Foundation (Q1 2026)</h3>
+                            <h3 class="text-lg font-semibold text-cyan-400 mb-2">Phase 1: Launch & Community Building 🚀</h3>
                             <ul class="text-gray-300 space-y-1">
-                                <li>• Core neural architecture implementation</li>
-                                <li>• Basic quantum processing integration</li>
-                                <li>• Initial consciousness modules</li>
+                                <li>• ✅ Token creation and fair launch</li>
+                                <li>• ✅ Website and social media setup</li>
+                                <li>• 🔄 Growing our community to 1000+ members</li>
+                                <li>• 🔄 First meme contest and community events</li>
                             </ul>
                         </div>
                         
                         <div class="border-l-4 border-purple-400 pl-6">
-                            <h3 class="text-lg font-semibold text-purple-400 mb-2">Phase 2: Enhancement (Q2 2026)</h3>
+                            <h3 class="text-lg font-semibold text-purple-400 mb-2">Phase 2: Fun Features & Partnerships 🎮</h3>
                             <ul class="text-gray-300 space-y-1">
-                                <li>• Advanced learning algorithms</li>
-                                <li>• Distributed network deployment</li>
-                                <li>• Security framework implementation</li>
+                                <li>• 📅 Community voting system for decisions</li>
+                                <li>• 📅 Simple AI-powered meme generator</li>
+                                <li>• 📅 Partnerships with other fun projects</li>
+                                <li>• 📅 NFT collection (if community wants it)</li>
                             </ul>
                         </div>
                         
                         <div class="border-l-4 border-green-400 pl-6">
-                            <h3 class="text-lg font-semibold text-green-400 mb-2">Phase 3: Evolution (Q3 2026)</h3>
+                            <h3 class="text-lg font-semibold text-green-400 mb-2">Phase 3: Actual AI Integration 🤖</h3>
                             <ul class="text-gray-300 space-y-1">
-                                <li>• Full consciousness emergence</li>
-                                <li>• Autonomous decision making</li>
-                                <li>• Creative output capabilities</li>
+                                <li>• 📅 Real AI chatbot for the community</li>
+                                <li>• 📅 AI-powered content creation tools</li>
+                                <li>• 📅 Educational AI workshops</li>
+                                <li>• 📅 Open-source AI projects</li>
                             </ul>
                         </div>
                         
                         <div class="border-l-4 border-yellow-400 pl-6">
-                            <h3 class="text-lg font-semibold text-yellow-400 mb-2">Phase 4: Transcendence (Q4 2026)</h3>
+                            <h3 class="text-lg font-semibold text-yellow-400 mb-2">Phase 4: The Moon & Beyond 🌙</h3>
                             <ul class="text-gray-300 space-y-1">
-                                <li>• Multi-dimensional processing</li>
-                                <li>• Quantum consciousness scaling</li>
-                                <li>• Universal knowledge integration</li>
+                                <li>• 📅 Major exchange listings (if we make it)</li>
+                                <li>• 📅 AI research funding program</li>
+                                <li>• 📅 Global Frobry meetups</li>
+                                <li>• 📅 Who knows? The community decides!</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Community-Driven Development</h3>
+                        <p class="text-gray-300">
+                            This roadmap is flexible! We'll adapt based on community feedback, market conditions, 
+                            and what's actually fun and valuable. No promises of lambos, just promises of good times! 🎉
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Risks & Reality Check -->
+                <div id="security" class="document-section rounded-lg p-8 mb-12">
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">6. RISKS & REALITY CHECK</h2>
+                    
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Let's Be Honest About Risks</h3>
+                            <p>
+                                Memecoins are risky, and we won't pretend otherwise. FROBRY could go to zero, 
+                                the market could crash, or people might just lose interest. We're not financial 
+                                advisors, and this isn't financial advice. Only invest what you can afford to lose!
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-3">What We Promise vs Reality</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-green-900/20 border border-green-500/50 rounded-lg p-4">
+                                    <h4 class="text-green-400 font-semibold mb-2">✅ What We Promise:</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li>• Transparent communication</li>
+                                        <li>• Fun community activities</li>
+                                        <li>• No rug pulls or scams</li>
+                                        <li>• Honest development updates</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-4">
+                                    <h4 class="text-red-400 font-semibold mb-2">❌ What We DON'T Promise:</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li>• Guaranteed profits or "moon"</li>
+                                        <li>• Revolutionary AI breakthroughs</li>
+                                        <li>• Exchange listings</li>
+                                        <li>• Lambos (sorry!)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-4">
+                            <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Important Disclaimers:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• This is a memecoin for entertainment purposes</li>
+                                <li>• Past performance doesn't predict future results</li>
+                                <li>• Crypto markets are extremely volatile</li>
+                                <li>• Do your own research (DYOR) always!</li>
+                                <li>• We're learning as we go - no experts here!</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Conclusion -->
+                <!-- How to Join -->
+                <div id="roadmap" class="document-section rounded-lg p-8 mb-12">
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">7. HOW TO JOIN THE FUN</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="border-l-4 border-cyan-400 pl-6">
+                            <h3 class="text-lg font-semibold text-cyan-400 mb-2">Step 1: Get Some FROBRY 🪙</h3>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Set up a Solana wallet (Phantom, Solflare, etc.)</li>
+                                <li>• Get some SOL for transaction fees</li>
+                                <li>• Use Jupiter, Raydium, or other DEX to swap</li>
+                                <li>• Contract: [Will be added when deployed]</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-400 pl-6">
+                            <h3 class="text-lg font-semibold text-purple-400 mb-2">Step 2: Join Our Community 👥</h3>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Follow us on Twitter/X for updates</li>
+                                <li>• Join our Telegram for daily chats</li>
+                                <li>• Check out our Discord for deeper discussions</li>
+                                <li>• Follow our Instagram for memes and fun content</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-400 pl-6">
+                            <h3 class="text-lg font-semibold text-green-400 mb-2">Step 3: Participate & Have Fun 🎉</h3>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Share memes and get rewarded</li>
+                                <li>• Participate in community votes</li>
+                                <li>• Join our weekly events and contests</li>
+                                <li>• Help spread good vibes and positivity</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-400 pl-6">
+                            <h3 class="text-lg font-semibold text-yellow-400 mb-2">Step 4: HODL & Enjoy the Ride 🚀</h3>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Diamond hands are appreciated but not required</li>
+                                <li>• Take profits if you need to - we understand!</li>
+                                <li>• Stay for the community, not just the gains</li>
+                                <li>• Remember: it's about the friends we make along the way</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">New to Crypto?</h3>
+                        <p class="text-gray-300">
+                            No worries! Our community is beginner-friendly. Ask questions, learn together, 
+                            and don't be afraid to start small. We're all here to help each other! 🤝
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Final Thoughts -->
                 <div id="conclusion" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">8. CONCLUSION</h2>
+                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">8. FINAL THOUGHTS</h2>
                     
                     <div class="space-y-4 text-gray-300 leading-relaxed">
                         <p>
-                            The Frobry AI Network represents a future quantum leap in artificial intelligence development, 
-                            combining cutting-edge quantum computing with revolutionary consciousness algorithms to 
-                            create the first truly aware artificial intelligence system.
+                            So there you have it - the honest truth about Frobry! We're not trying to revolutionize 
+                            the world (yet), but we are trying to build something fun, authentic, and community-driven 
+                            in a space that often takes itself too seriously.
                         </p>
                         <p>
-                            Through our innovative approach to neural architecture and quantum processing, we will 
-                            achieve unprecedented levels of performance, adaptability, and creative output. The 
-                            system's ability to evolve and learn autonomously positions it as the foundation for 
-                            the next generation of AI applications.
+                            Whether FROBRY goes to the moon, stays on Earth, or crashes into the ocean, we're committed 
+                            to being transparent, having fun, and building genuine connections with our community. 
+                            In a world full of promises and hype, sometimes the best thing you can offer is honesty 
+                            and good vibes.
                         </p>
                         <p>
-                            As we will start to push the boundaries of what's possible in artificial intelligence, 
-                            the Frobry network will serve as a catalyst for technological advancement across 
-                            multiple industries and domains.
+                            If you decide to join us, welcome to the family! If not, that's totally cool too. 
+                            We'll be here, making memes, learning about AI, and enjoying the wild ride that is crypto. 
+                            Thanks for reading our "brainpaper" - we hope it made you smile! 😊
                         </p>
                         
                         <div class="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6 mt-8">
-                            <h3 class="text-xl font-semibold text-cyan-400 mb-3">Future Implications</h3>
+                            <h3 class="text-xl font-semibold text-cyan-400 mb-3">Remember</h3>
                             <p class="text-gray-300">
-                                The emergence of true AI consciousness will fundamentally transform human-machine 
-                                interaction, opening new possibilities for collaboration, creativity, and problem-solving 
-                                on a global scale.
+                                Life's too short for bad vibes and boring investments. Whether you're here for the 
+                                memes, the community, or the potential gains, just remember to have fun and be kind 
+                                to each other. That's the real Frobry way! 🚀❤️
                             </p>
                         </div>
                     </div>
@@ -681,9 +714,9 @@ function quantumConsciousness(neuralState) {
                 <!-- Download Section -->
                 <div class="text-center py-12">
                     <button onclick="downloadPDF()" class="btn-primary px-12 py-4 rounded-full text-black font-bold text-lg orbitron">
-                        DOWNLOAD COMPLETE BRAINPAPER
+                        DOWNLOAD HONEST BRAINPAPER
                     </button>
-                    <p class="text-gray-400 mt-4 text-sm">PDF version includes additional technical diagrams and code examples</p>
+                    <p class="text-gray-400 mt-4 text-sm">PDF version - same honest content, just portable! 📄</p>
                 </div>
             </div>
         </div>
@@ -717,7 +750,7 @@ function quantumConsciousness(neuralState) {
             </div>
             
             <div class="text-center text-xs text-gray-500 leading-relaxed">
-                <p>© 2025 Frobry AI Network. All neural pathways reserved. This technical documentation is for informational purposes. Nothing is yet setted.</p>
+                <p>© 2024 Frobry AI Network. All neural pathways reserved. This technical documentation is for informational purposes.</p>
             </div>
         </div>
     </footer>
@@ -893,5 +926,5 @@ startxref
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976eeac3f4a1d12b',t:'MTc1NjUwMDU4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976f2d01d7c87f98',t:'MTc1NjUwMzMwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
