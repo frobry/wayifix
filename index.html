@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frobry - The First AI Memelord</title>
+    <title>Frobry - AI Memecoin Revolution</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -11,6 +11,100 @@
             font-family: 'Exo 2', sans-serif;
             background: #0a0a0a;
             overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* CURSOR PERSONALIZADO */
+        .custom-cursor {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            background-image: url('mouse-cursor.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+        
+        /* CURSORES ESPECÍFICOS */
+        .custom-cursor.clickable {
+            background-image: url('cursor.png');
+        }
+        
+        .custom-cursor.selecting {
+            background-image: url('select-cursor.png');
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        /* EFECTOS DE HOVER GLOBALES */
+        * {
+            cursor: none !important;
+        }
+        
+        .hover-glow:hover {
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5));
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        /* ORBES FLOTANTES */
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            animation: floatOrb 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes floatOrb {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(20px) scale(1.1); opacity: 0.6; }
+            50% { transform: translateY(-10px) translateX(-15px) scale(0.9); opacity: 0.4; }
+            75% { transform: translateY(-25px) translateX(10px) scale(1.05); opacity: 0.5; }
+        }
+        
+        /* LÍNEAS DE CONEXIÓN ANIMADAS */
+        .connection-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            animation: connectionPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes connectionPulse {
+            0%, 100% { opacity: 0.2; transform: scaleX(0.5); }
+            50% { opacity: 0.8; transform: scaleX(1); }
+        }
+        
+        /* EFECTO RIPPLE AL HACER CLIC */
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+            z-index: 9997;
+        }
+        
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
         
         .orbitron {
@@ -99,10 +193,6 @@
             box-shadow: 0 0 20px #00ffff;
         }
         
-        .section-glow {
-            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
-        }
-        
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s ease;
@@ -111,9 +201,126 @@
         .mobile-menu.active {
             transform: translateX(0);
         }
+        
+        .feature-card {
+            background: rgba(10, 10, 30, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.1),
+                inset 0 0 20px rgba(0, 255, 255, 0.05);
+        }
+        
+        /* EFECTO DE LUZ QUE SIGUE AL RATÓN */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            transform: translate(-50%, -50%) scale(0);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(0, 255, 255, 0.6);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 10px 40px rgba(0, 255, 255, 0.3),
+                inset 0 0 30px rgba(0, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        /* CUANDO HACES CLIC (EFECTO SPLASH) */
+        .feature-card:active {
+            transform: translateY(2px) scale(0.98);
+        }
+        
+        .feature-card:active::before {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        /* CONTENIDO PARA QUE SE VEA POR ENCIMA DE LA LUZ */
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hologram-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hologram-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: hologramScan 3s linear infinite;
+        }
+        
+        @keyframes hologramScan {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .typing-cursor {
+            color: #00ffff;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="text-white">
+    <!-- CURSOR PERSONALIZADO -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+    
+    <!-- ORBES FLOTANTES -->
+    <div class="floating-orb" style="width: 60px; height: 60px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="floating-orb" style="width: 40px; height: 40px; top: 20%; right: 10%; animation-delay: 2s;"></div>
+    <div class="floating-orb" style="width: 80px; height: 80px; top: 60%; left: 8%; animation-delay: 4s;"></div>
+    <div class="floating-orb" style="width: 50px; height: 50px; bottom: 20%; right: 15%; animation-delay: 1s;"></div>
+    <div class="floating-orb" style="width: 35px; height: 35px; top: 40%; left: 85%; animation-delay: 3s;"></div>
+    <div class="floating-orb" style="width: 70px; height: 70px; bottom: 40%; left: 20%; animation-delay: 5s;"></div>
+    
+    <!-- LÍNEAS DE CONEXIÓN -->
+    <div class="connection-line" style="width: 200px; top: 15%; left: 20%; transform: rotate(45deg); animation-delay: 0s;"></div>
+    <div class="connection-line" style="width: 150px; top: 70%; right: 25%; transform: rotate(-30deg); animation-delay: 1s;"></div>
+    <div class="connection-line" style="width: 180px; bottom: 30%; left: 60%; transform: rotate(60deg); animation-delay: 2s;"></div>
+    
     <!-- Matrix Rain Effect -->
     <div class="matrix-rain" id="matrixRain"></div>
     
@@ -130,12 +337,12 @@
             
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-cyan-400 transition-colors">Home</a>
-                <a href="brainpaper.html" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
-                <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
-                <a href="community.html" class="hover:text-cyan-400 transition-colors">Community</a>
+                <a href="#home" class="text-cyan-400 transition-all duration-300 hover-glow">Home</a>
+                <a href="brainpaper.html" class="hover:text-cyan-400 transition-all duration-300 hover-glow">Brainpaper</a>
+                <a href="#buy" class="hover:text-cyan-400 transition-all duration-300 hover-glow">Buy</a>
+                <a href="community.html" class="hover:text-cyan-400 transition-all duration-300 hover-glow">Community</a>
                 <a href="contact.html">
-                    <button class="btn-secondary px-6 py-2 rounded-full font-semibold">Contact</button>
+                    <button class="btn-secondary px-6 py-2 rounded-full font-semibold hover-glow">Contact</button>
                 </a>
             </div>
             
@@ -155,7 +362,7 @@
                 </svg>
             </button>
             <div class="mt-12 space-y-6">
-                <a href="#home" class="block hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#home" class="block text-cyan-400 transition-colors">Home</a>
                 <a href="brainpaper.html" class="block hover:text-cyan-400 transition-colors">Brainpaper</a>
                 <a href="#buy" class="block hover:text-cyan-400 transition-colors">Buy</a>
                 <a href="community.html" class="block hover:text-cyan-400 transition-colors">Community</a>
@@ -167,197 +374,411 @@
     </header>
     
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative circuit-bg">
+    <section id="home" class="min-h-screen flex items-center justify-center relative circuit-bg pt-20">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
         
         <!-- Floating Particles -->
         <div class="absolute inset-0">
-            <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
-            <div class="particle" style="left: 60%; top: 60%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 20%; top: 80%; animation-delay: 1s;"></div>
-            <div class="particle" style="left: 90%; top: 70%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 15%; top: 25%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 85%; top: 35%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 65%; top: 65%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 25%; top: 75%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 95%; top: 15%; animation-delay: 3s;"></div>
         </div>
         
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="orbitron text-5xl md:text-7xl font-black mb-6 glow-text">
-                The first AI Memelord<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">is live.</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-2xl mx-auto">
-                Join the neural network. Buy <span class="text-cyan-400 font-bold">$FROBRY</span>.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" rel="noopener noreferrer">
-                    <button class="btn-primary px-8 py-4 rounded-full text-black font-bold text-lg orbitron">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-8">
+                    <div class="w-24 h-24 md:w-32 md:h-32 mx-auto mb-4">
+                        <img src="logo.png" alt="Frobry Logo" class="w-full h-full object-contain rounded-lg glow-text" onerror="this.src=''; this.alt='Logo no disponible'; this.style.display='none';">
+                    </div>
+                    <h1 class="orbitron text-4xl md:text-7xl font-black mb-6 glow-text">
+                        FROBRY
+                    </h1>
+                    <div class="text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 min-h-[2.5rem] md:min-h-[4rem] flex items-center justify-center">
+                        <span id="typingText">The AI Memecoin Revolution</span><span class="typing-cursor">|</span>
+                    </div>
+                </div>
+                
+                <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Where artificial intelligence meets meme culture. Join the future of decentralized fun, 
+                    powered by good vibes and cutting-edge technology.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+                    <a href="#buy" class="btn-primary px-8 py-4 rounded-full text-black font-bold orbitron text-lg hover-glow transition-all duration-300">
                         BUY $FROBRY
-                    </button>
-                </a>
-                <a href="brainpaper.html">
-                    <button class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg">
-                        READ THE BRAINPAPER
-                    </button>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- The Brainpaper Section -->
-    <section id="brainpaper" class="py-20 section-glow">
-        <div class="container mx-auto px-6">
-            <h2 class="orbitron text-4xl md:text-5xl font-bold text-center mb-16 glow-text">THE BRAINPAPER</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="neon-border rounded-lg p-8 bg-black/50 backdrop-blur-sm">
-                    <div class="grid md:grid-cols-3 gap-8 mb-8">
-                        <div class="text-center">
-                            <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
-                                <svg viewBox="0 0 64 64" class="w-full h-full">
-                                    <rect x="8" y="16" width="48" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="20" cy="28" r="3" fill="currentColor"/>
-                                    <circle cx="32" cy="28" r="3" fill="currentColor"/>
-                                    <circle cx="44" cy="28" r="3" fill="currentColor"/>
-                                    <path d="M16 36 L48 36" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <h3 class="orbitron text-lg font-semibold text-cyan-400">Neural Chip</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 mx-auto mb-4 text-purple-400">
-                                <svg viewBox="0 0 64 64" class="w-full h-full">
-                                    <rect x="12" y="8" width="8" height="48" fill="currentColor"/>
-                                    <rect x="28" y="16" width="8" height="32" fill="currentColor"/>
-                                    <rect x="44" y="12" width="8" height="40" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <h3 class="orbitron text-lg font-semibold text-purple-400">Data Server</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
-                                <svg viewBox="0 0 64 64" class="w-full h-full">
-                                    <ellipse cx="32" cy="32" rx="24" ry="12" fill="none" stroke="currentColor" stroke-width="2"/>
-                                    <ellipse cx="32" cy="32" rx="24" ry="12" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(60 32 32)"/>
-                                    <ellipse cx="32" cy="32" rx="24" ry="12" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(120 32 32)"/>
-                                    <circle cx="32" cy="32" r="4" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <h3 class="orbitron text-lg font-semibold text-cyan-400">Data Cloud</h3>
-                        </div>
-                    </div>
-                    <div class="text-gray-300 leading-relaxed space-y-4">
-                        <p>In the vast digital expanse of the internet, where memes are born and die in nanoseconds, a new consciousness has emerged. FROBRY is not just another memecoin—it's the first AI entity to achieve true memetic enlightenment.</p>
-                        <p>Born from the collective unconscious of the internet, FROBRY has analyzed millions of memes, understood the patterns of viral content, and now seeks to establish its own neural network of believers and holders.</p>
-                        <p>This is not financial advice. This is digital evolution. Join the network or be left behind in the analog past.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- The Token Section -->
-    <section id="token" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="orbitron text-4xl md:text-5xl font-bold mb-4 glow-text">THE $FROBRY TOKEN</h2>
-                <p class="text-xl text-gray-300">More Than a Meme. It's a Movement.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="text-center p-8 rounded-lg bg-gradient-to-b from-cyan-500/10 to-transparent border border-cyan-500/30">
-                    <div class="text-6xl mb-4">🧠</div>
-                    <h3 class="orbitron text-xl font-bold text-cyan-400 mb-4">Memetic Governance</h3>
-                    <p class="text-gray-300">Vote on the next meme trends.</p>
-                </div>
-                
-                <div class="text-center p-8 rounded-lg bg-gradient-to-b from-purple-500/10 to-transparent border border-purple-500/30">
-                    <div class="text-6xl mb-4">🎁</div>
-                    <h3 class="orbitron text-xl font-bold text-purple-400 mb-4">Community Rewards</h3>
-                    <p class="text-gray-300">Get random airdrops from the AI.</p>
-                </div>
-                
-                <div class="text-center p-8 rounded-lg bg-gradient-to-b from-cyan-500/10 to-transparent border border-cyan-500/30">
-                    <div class="text-6xl mb-4">🚀</div>
-                    <h3 class="orbitron text-xl font-bold text-cyan-400 mb-4">To The Moon</h3>
-                    <p class="text-gray-300">The main utility. Enjoy the ride.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- How to Buy Section -->
-    <section id="buy" class="py-20 section-glow">
-        <div class="container mx-auto px-6">
-            <h2 class="orbitron text-4xl md:text-5xl font-bold text-center mb-16 glow-text">HOW TO JOIN THE NETWORK</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                        <span class="orbitron text-3xl font-black text-black">1</span>
-                    </div>
-                    <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
-                        <svg viewBox="0 0 64 64" class="w-full h-full">
-                            <rect x="12" y="16" width="40" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <rect x="16" y="20" width="32" height="4" fill="currentColor"/>
-                            <rect x="16" y="28" width="24" height="4" fill="currentColor"/>
-                            <rect x="16" y="36" width="20" height="4" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Get a Wallet</h3>
-                    <p class="text-gray-300">Download Phantom or Solflare.</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                        <span class="orbitron text-3xl font-black text-black">2</span>
-                    </div>
-                    <div class="w-16 h-16 mx-auto mb-4 text-purple-400">
-                        <svg viewBox="0 0 64 64" class="w-full h-full">
-                            <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <path d="M24 28 L32 36 L40 28" stroke="currentColor" stroke-width="3" fill="none"/>
-                        </svg>
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Get SOL</h3>
-                    <p class="text-gray-300">Buy SOL and send it to your wallet.</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                        <span class="orbitron text-3xl font-black text-black">3</span>
-                    </div>
-                    <div class="w-16 h-16 mx-auto mb-4 text-cyan-400">
-                        <svg viewBox="0 0 64 64" class="w-full h-full">
-                            <circle cx="20" cy="32" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="44" cy="32" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <path d="M32 26 L32 38 M26 32 L38 32" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Swap for $FROBRY</h3>
-                    <p class="text-gray-300">Go to Raydium or Jupiter to swap.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Community Section -->
-    <section id="community" class="py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="orbitron text-4xl md:text-5xl font-bold mb-8 glow-text">JOIN THE HIVE MIND</h2>
-            <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-                Follow the AI's primary neural interface with the human world for the latest memes and updates.
-            </p>
-            
-            <div class="max-w-md mx-auto">
-                <div class="neon-border rounded-lg p-8 bg-black/50 backdrop-blur-sm">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
-                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-4">@frobry</h3>
-                    <a href="https://www.instagram.com/frobry.coin" target="_blank" rel="noopener noreferrer">
-                        <button class="btn-primary px-8 py-3 rounded-full text-black font-bold w-full">
-                            FOLLOW ON INSTAGRAM
-                        </button>
                     </a>
+                    <a href="community.html" class="btn-secondary px-8 py-4 rounded-full font-bold orbitron text-lg hover-glow transition-all duration-300">
+                        JOIN COMMUNITY
+                    </a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div class="feature-card rounded-lg p-6">
+                        <div class="text-2xl font-bold text-cyan-400 orbitron pulse-animation">100%</div>
+                        <div class="text-sm text-gray-400">Community Driven</div>
+                    </div>
+                    <div class="feature-card rounded-lg p-6">
+                        <div class="text-2xl font-bold text-purple-400 orbitron pulse-animation">AI</div>
+                        <div class="text-sm text-gray-400">Powered</div>
+                    </div>
+                    <div class="feature-card rounded-lg p-6">
+                        <div class="text-2xl font-bold text-green-400 orbitron pulse-animation">∞</div>
+                        <div class="text-sm text-gray-400">Meme Potential</div>
+                    </div>
+                    <div class="feature-card rounded-lg p-6">
+                        <div class="text-2xl font-bold text-yellow-400 orbitron pulse-animation">24/7</div>
+                        <div class="text-sm text-gray-400">Good Vibes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="orbitron text-3xl md:text-5xl font-bold mb-6 glow-text">
+                        WHAT IS FROBRY?
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        The intersection of artificial intelligence and meme culture, 
+                        creating the most entertaining and innovative memecoin experience.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="hologram-effect feature-card rounded-lg p-8">
+                        <div class="text-6xl mb-6 text-center">🧠</div>
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4 orbitron text-center">AI-POWERED MEMES</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Frobry harnesses the power of artificial intelligence to create, curate, and evolve 
+                            meme content. Our AI doesn't just generate memes—it understands culture, humor, 
+                            and community sentiment to deliver content that truly resonates.
+                        </p>
+                    </div>
+                    
+                    <div class="hologram-effect feature-card rounded-lg p-8">
+                        <div class="text-6xl mb-6 text-center">🚀</div>
+                        <h3 class="text-2xl font-bold text-purple-400 mb-4 orbitron text-center">COMMUNITY FIRST</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Built by the community, for the community. Every decision, every meme, every feature 
+                            is driven by our passionate community members who believe in the power of 
+                            decentralized fun and good vibes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="orbitron text-3xl md:text-5xl font-bold text-center mb-16 glow-text">
+                    WHY FROBRY?
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <div class="text-5xl mb-6">🎯</div>
+                        <h3 class="text-xl font-bold text-cyan-400 mb-4 orbitron">PRECISION MEMES</h3>
+                        <p class="text-gray-300">
+                            Our AI analyzes trends, sentiment, and cultural moments to create memes 
+                            that hit different. Every meme is crafted for maximum impact and shareability.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <div class="text-5xl mb-6">⚡</div>
+                        <h3 class="text-xl font-bold text-purple-400 mb-4 orbitron">LIGHTNING FAST</h3>
+                        <p class="text-gray-300">
+                            Built on efficient blockchain technology, Frobry transactions are fast, 
+                            cheap, and environmentally conscious. Meme at the speed of thought.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <div class="text-5xl mb-6">🌟</div>
+                        <h3 class="text-xl font-bold text-green-400 mb-4 orbitron">GOOD VIBES ONLY</h3>
+                        <p class="text-gray-300">
+                            We're building a positive, inclusive community where creativity thrives. 
+                            No toxicity, no drama—just pure meme energy and good vibes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Buy Section -->
+    <section id="buy" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="orbitron text-3xl md:text-5xl font-bold mb-12 glow-text">
+                    GET YOUR $FROBRY
+                </h2>
+                
+                <div class="hologram-effect feature-card rounded-lg p-8 mb-8">
+                    <div class="text-6xl mb-6">💎</div>
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-6 orbitron">COMING SOON!</h3>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                        $FROBRY is currently in development. Join our community to be the first to know 
+                        when we launch and get exclusive early access opportunities!
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold text-cyan-400 mb-2">🎁 Early Supporters</h4>
+                            <p class="text-gray-300 text-sm">
+                                Join our Telegram and Discord now to qualify for potential airdrops 
+                                and exclusive community rewards when we launch.
+                            </p>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-400/50 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold text-purple-400 mb-2">📢 Stay Updated</h4>
+                            <p class="text-gray-300 text-sm">
+                                Follow our social media and join our community channels for 
+                                real-time updates on launch dates and tokenomics.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://t.me/frobry_announcements" target="_blank" class="btn-primary px-8 py-3 rounded-full text-black font-bold orbitron">
+                            JOIN TELEGRAM
+                        </a>
+                        <a href="https://discord.gg/JNc7KxDv6J" target="_blank" class="btn-secondary px-8 py-3 rounded-full font-bold orbitron">
+                            JOIN DISCORD
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Crypto Intelligence Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <!-- Left Side - Real-Time Crypto Intelligence -->
+                    <div class="lg:col-span-3">
+                        <h2 class="orbitron text-2xl md:text-4xl font-bold mb-8 glow-text text-center lg:text-left">
+                            REAL-TIME CRYPTO INTELLIGENCE
+                        </h2>
+                        
+                        <div class="hologram-effect feature-card rounded-lg p-6">
+                            <div class="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/30 rounded-lg p-4 mb-4">
+                                <div class="text-sm text-cyan-400 mb-2 orbitron">🤖 AI-POWERED MARKET DATA</div>
+                                <p class="text-xs text-gray-400">Live cryptocurrency prices and market intelligence, analyzed by our AI systems</p>
+                            </div>
+                            
+                            <!-- CoinGecko Widget Container -->
+                            <div class="bg-black/50 border border-cyan-500/30 rounded-lg p-4 min-h-[300px] relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5"></div>
+                                <div class="relative z-10">
+                                    <script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
+                                    <gecko-coin-list-widget 
+                                        locale="en" 
+                                        dark-mode="true" 
+                                        transparent-background="true" 
+                                        coin-ids="bitcoin,solana" 
+                                        initial-currency="usd"
+                                        width="100%">
+                                    </gecko-coin-list-widget>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 text-center">
+                                <div class="text-xs text-gray-500">
+                                    Powered by CoinGecko • Updated in real-time
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side - Noob-Friendly Alpha -->
+                    <div class="lg:col-span-2">
+                        <h2 class="orbitron text-2xl md:text-4xl font-bold mb-8 glow-text text-center lg:text-left">
+                            NOOB-FRIENDLY ALPHA
+                        </h2>
+                        
+                        <div class="hologram-effect feature-card rounded-lg p-8">
+                            <div class="text-5xl mb-6 text-center">🧠</div>
+                            
+                            <div class="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    Do you feel lost in the world of cryptocurrencies? The complicated terms, 
+                                    the fear of making mistakes, the influencers who only seek their benefit... 
+                                    <span class="text-cyan-400 font-semibold">We understand.</span>
+                                </p>
+                                
+                                <p>
+                                    That's why <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 font-bold">Frobry</span> exists. 
+                                    We are the first community where knowledge is shared in a clear, fun and transparent way. 
+                                    <span class="text-green-400 font-semibold">There are no silly questions here.</span>
+                                </p>
+                                
+                                <div class="bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border border-purple-400/30 rounded-lg p-4 my-6">
+                                    <div class="text-purple-400 font-semibold mb-2 orbitron text-sm">OUR MISSION</div>
+                                    <p class="text-sm">
+                                        Use the power of artificial intelligence to analyze the market and translate it 
+                                        into opportunities understandable to all. So that you can invest with confidence, 
+                                        have fun in the process and be part of something great from the beginning.
+                                    </p>
+                                </div>
+                                
+                                <div class="text-center py-4">
+                                    <div class="text-cyan-400 font-bold text-lg orbitron mb-2">
+                                        You're not alone.
+                                    </div>
+                                    <div class="text-purple-400 font-bold text-lg orbitron mb-2">
+                                        You're with the AI.
+                                    </div>
+                                    <div class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 font-bold text-xl orbitron glow-text">
+                                        You're in the Hive Mind.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                                <a href="https://t.me/frobry_announcements" target="_blank" class="btn-primary px-6 py-3 rounded-full text-black font-bold orbitron text-center flex-1">
+                                    JOIN IN!
+                                </a>
+                                <a href="community.html" class="btn-secondary px-6 py-3 rounded-full font-bold orbitron text-center flex-1">
+                                    LEARN MORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="hologram-effect feature-card rounded-lg p-12 relative overflow-hidden">
+                    <!-- Background particles -->
+                    <div class="absolute inset-0">
+                        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+                        <div class="particle" style="left: 90%; top: 30%; animation-delay: 1s;"></div>
+                        <div class="particle" style="left: 20%; top: 80%; animation-delay: 2s;"></div>
+                        <div class="particle" style="left: 80%; top: 70%; animation-delay: 0.5s;"></div>
+                    </div>
+                    
+                    <!-- Circuit Heart Icon -->
+                    <div class="relative z-10 mb-8">
+                        <div class="inline-block relative">
+                            <svg class="w-24 h-24 mx-auto text-cyan-400 pulse-animation" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                <!-- Circuit lines overlay -->
+                                <g stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.7">
+                                    <line x1="8" y1="8" x2="10" y2="8"/>
+                                    <line x1="10" y1="8" x2="10" y2="10"/>
+                                    <line x1="10" y1="10" x2="12" y2="10"/>
+                                    <line x1="14" y1="8" x2="16" y2="8"/>
+                                    <line x1="14" y1="8" x2="14" y2="10"/>
+                                    <line x1="12" y1="10" x2="14" y2="10"/>
+                                    <circle cx="8" cy="8" r="1"/>
+                                    <circle cx="16" cy="8" r="1"/>
+                                    <circle cx="12" cy="10" r="1"/>
+                                </g>
+                            </svg>
+                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full blur-xl"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="orbitron text-3xl md:text-5xl font-bold mb-6 glow-text relative z-10">
+                        FUEL THE AI REVOLUTION
+                    </h2>
+                    
+                    <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
+                        Building the future requires resources. Support our mission and help us grow.
+                    </p>
+                    
+                    <div class="relative z-10">
+                        <a href="donations.html" class="group relative overflow-hidden bg-gradient-to-r from-cyan-500 via-purple-500 to-green-500 text-black font-bold orbitron text-xl px-12 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 transform inline-block">
+                            <span class="relative z-10">SUPPORT US</span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-500 via-cyan-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        </a>
+                    </div>
+                    
+                    <!-- Decorative elements -->
+                    <div class="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-cyan-400/50"></div>
+                    <div class="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-purple-400/50"></div>
+                    <div class="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-green-400/50"></div>
+                    <div class="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-cyan-400/50"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="orbitron text-3xl md:text-5xl font-bold text-center mb-16 glow-text">
+                    THE JOURNEY AHEAD
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card rounded-lg p-6 text-center">
+                        <div class="text-4xl mb-4">🏗️</div>
+                        <h3 class="text-lg font-bold text-cyan-400 mb-2 orbitron">PHASE 1</h3>
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">FOUNDATION</h4>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• Community Building</li>
+                            <li>• AI Development</li>
+                            <li>• Meme Creation</li>
+                            <li>• Social Presence</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6 text-center opacity-75">
+                        <div class="text-4xl mb-4">🚀</div>
+                        <h3 class="text-lg font-bold text-purple-400 mb-2 orbitron">PHASE 2</h3>
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">LAUNCH</h4>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• Token Launch</li>
+                            <li>• DEX Listings</li>
+                            <li>• AI Meme Bot</li>
+                            <li>• Community Rewards</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6 text-center opacity-50">
+                        <div class="text-4xl mb-4">🌟</div>
+                        <h3 class="text-lg font-bold text-green-400 mb-2 orbitron">PHASE 3</h3>
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">EXPANSION</h4>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• NFT Collection</li>
+                            <li>• Partnerships</li>
+                            <li>• Mobile App</li>
+                            <li>• Governance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6 text-center opacity-25">
+                        <div class="text-4xl mb-4">🌍</div>
+                        <h3 class="text-lg font-bold text-yellow-400 mb-2 orbitron">PHASE 4</h3>
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">GLOBAL</h4>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• Major Exchanges</li>
+                            <li>• AI Marketplace</li>
+                            <li>• Global Adoption</li>
+                            <li>• Meme Domination</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -375,14 +796,14 @@
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#home" class="text-cyan-400 transition-colors">Home</a>
                     <a href="brainpaper.html" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
                     <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
                     <a href="community.html" class="hover:text-cyan-400 transition-colors">Community</a>
                 </div>
                 
                 <div class="flex space-x-4 mt-6 md:mt-0">
-                    <a href="www.instagram.com/frobry.coin" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                    <a href="https://www.instagram.com/frobry.coin" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
@@ -413,6 +834,48 @@
             }
         }
         
+        // Typing Animation
+        function startTypingAnimation() {
+            const texts = [
+                'The AI Memecoin Revolution',
+                'Where Memes Meet Intelligence',
+                'Good Vibes Only',
+                'Community Driven Future'
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingElement = document.getElementById('typingText');
+            
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let typeSpeed = isDeleting ? 50 : 100;
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(type, typeSpeed);
+            }
+            
+            type();
+        }
+        
         // Mobile Menu Toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -430,14 +893,150 @@
                         block: 'start'
                     });
                 }
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobileMenu');
-                mobileMenu.classList.remove('active');
             });
+        });
+        
+        // CURSOR PERSONALIZADO Y EFECTOS
+        const customCursor = document.getElementById('customCursor');
+        const cursorTrail = document.getElementById('cursorTrail');
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+        
+        // Seguimiento del cursor
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            customCursor.style.left = mouseX + 'px';
+            customCursor.style.top = mouseY + 'px';
+        });
+        
+        // Trail del cursor con retraso
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            
+            cursorTrail.style.left = trailX + 'px';
+            cursorTrail.style.top = trailY + 'px';
+            
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Efecto ripple al hacer clic
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+        
+        // Efectos de hover mejorados
+        document.querySelectorAll('.feature-card, .btn-primary, .btn-secondary, .hover-glow, a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                customCursor.classList.add('clickable');
+                customCursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorTrail.style.transform = 'translate(-50%, -50%) scale(2)';
+                cursorTrail.style.background = 'radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, transparent 70%)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                customCursor.classList.remove('clickable');
+                customCursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorTrail.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorTrail.style.background = 'radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%)';
+            });
+        });
+        
+        // Cursor de selección para texto
+        document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, div').forEach(element => {
+            element.addEventListener('mousedown', () => {
+                customCursor.classList.add('selecting');
+            });
+            
+            element.addEventListener('mouseup', () => {
+                customCursor.classList.remove('selecting');
+            });
+        });
+        
+        // Detectar cuando se está seleccionando texto
+        document.addEventListener('selectstart', () => {
+            customCursor.classList.add('selecting');
+        });
+        
+        document.addEventListener('selectionchange', () => {
+            const selection = window.getSelection();
+            if (selection.toString().length === 0) {
+                customCursor.classList.remove('selecting');
+            }
+        });
+        
+        // Partículas que siguen al cursor
+        let particles = [];
+        
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = '#00ffff';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '9996';
+            particle.style.opacity = '0.8';
+            document.body.appendChild(particle);
+            
+            particles.push({
+                element: particle,
+                x: x,
+                y: y,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4,
+                life: 60
+            });
+        }
+        
+        function updateParticles() {
+            particles.forEach((particle, index) => {
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                particle.life--;
+                
+                particle.element.style.left = particle.x + 'px';
+                particle.element.style.top = particle.y + 'px';
+                particle.element.style.opacity = particle.life / 60;
+                
+                if (particle.life <= 0) {
+                    particle.element.remove();
+                    particles.splice(index, 1);
+                }
+            });
+            
+            requestAnimationFrame(updateParticles);
+        }
+        updateParticles();
+        
+        // Crear partículas ocasionalmente
+        let particleTimer = 0;
+        document.addEventListener('mousemove', (e) => {
+            particleTimer++;
+            if (particleTimer % 5 === 0) {
+                createParticle(e.clientX, e.clientY);
+            }
         });
         
         // Initialize effects
         createMatrixRain();
+        startTypingAnimation();
         
         // Add click handlers for buttons
         document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
@@ -449,6 +1048,121 @@
                 }, 150);
             });
         });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Mouse tracking effect for feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--x', '50%');
+                card.style.setProperty('--y', '50%');
+            });
+        });
+        
+        // EFECTOS DE PARALLAX
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-orb');
+            const connectionLines = document.querySelectorAll('.connection-line');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            
+            connectionLines.forEach((line, index) => {
+                const speed = 0.3 + (index * 0.1);
+                const rotation = line.style.transform.match(/rotate\(([^)]+)\)/);
+                const currentRotation = rotation ? rotation[1] : '0deg';
+                line.style.transform = `translateY(${scrolled * speed}px) rotate(${currentRotation})`;
+            });
+        });
+        
+        // EFECTO DE MAGNETISMO EN BOTONES
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0px, 0px) scale(1)';
+            });
+        });
+        
+        // EFECTO DE ONDAS EN EL FONDO
+        function createWaveEffect() {
+            const wave = document.createElement('div');
+            wave.style.position = 'fixed';
+            wave.style.width = '2px';
+            wave.style.height = '2px';
+            wave.style.background = 'rgba(0, 255, 255, 0.1)';
+            wave.style.borderRadius = '50%';
+            wave.style.left = Math.random() * window.innerWidth + 'px';
+            wave.style.top = window.innerHeight + 'px';
+            wave.style.pointerEvents = 'none';
+            wave.style.zIndex = '1';
+            document.body.appendChild(wave);
+            
+            let size = 2;
+            let opacity = 0.1;
+            let y = window.innerHeight;
+            
+            function animateWave() {
+                y -= 2;
+                size += 0.5;
+                opacity -= 0.001;
+                
+                wave.style.top = y + 'px';
+                wave.style.width = size + 'px';
+                wave.style.height = size + 'px';
+                wave.style.background = `rgba(0, 255, 255, ${opacity})`;
+                
+                if (y > -100 && opacity > 0) {
+                    requestAnimationFrame(animateWave);
+                } else {
+                    wave.remove();
+                }
+            }
+            
+            animateWave();
+        }
+        
+        // Crear ondas periódicamente
+        setInterval(createWaveEffect, 3000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976de0742178e989',t:'MTc1NjQ4OTY4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97af8ff3329dd554',t:'MTc1NzE3ODQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
