@@ -8,8 +8,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
         
-        * {
-            cursor: none !important;
+        @media (min-width: 769px) {
+            * {
+                cursor: none !important;
+            }
         }
         
         body {
@@ -551,15 +553,100 @@
             </div>
             
             <div class="relative">
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full"></div>
+                <!-- Desktop Timeline -->
+                <div class="hidden md:block">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full"></div>
+                    
+                    <div class="space-y-12">
+                        <!-- Phase 1 -->
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl p-6 border border-white/10">
+                                    <h3 class="text-2xl font-bold mb-3 text-cyan-400">Phase 1: Genesis</h3>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>✅ Token Launch & Liquidity</li>
+                                        <li>✅ Community Building</li>
+                                        <li>✅ Basic AI Meme Generator</li>
+                                        <li>✅ Website & Social Media</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-2/12 flex justify-center">
+                                <div class="w-8 h-8 bg-cyan-400 rounded-full border-4 border-white z-10"></div>
+                            </div>
+                            <div class="w-5/12"></div>
+                        </div>
+                        
+                        <!-- Phase 2 -->
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12"></div>
+                            <div class="w-2/12 flex justify-center">
+                                <div class="w-8 h-8 bg-purple-400 rounded-full border-4 border-white z-10"></div>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-6 border border-white/10">
+                                    <h3 class="text-2xl font-bold mb-3 text-purple-400">Phase 2: Evolution</h3>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>🔄 Advanced AI Features</li>
+                                        <li>🔄 Mobile App Launch</li>
+                                        <li>🔄 Partnership Announcements</li>
+                                        <li>🔄 Staking Rewards</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 3 -->
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl p-6 border border-white/10">
+                                    <h3 class="text-2xl font-bold mb-3 text-green-400">Phase 3: Expansion</h3>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>⏳ NFT Marketplace</li>
+                                        <li>⏳ Cross-chain Bridge</li>
+                                        <li>⏳ DAO Governance</li>
+                                        <li>⏳ Major Exchange Listings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-2/12 flex justify-center">
+                                <div class="w-8 h-8 bg-green-400 rounded-full border-4 border-white z-10"></div>
+                            </div>
+                            <div class="w-5/12"></div>
+                        </div>
+                        
+                        <!-- Phase 4 -->
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12"></div>
+                            <div class="w-2/12 flex justify-center">
+                                <div class="w-8 h-8 bg-yellow-400 rounded-full border-4 border-white z-10"></div>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl p-6 border border-white/10">
+                                    <h3 class="text-2xl font-bold mb-3 text-yellow-400">Phase 4: Domination</h3>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>🚀 Global Adoption</li>
+                                        <li>🚀 AI Ecosystem Expansion</li>
+                                        <li>🚀 Metaverse Integration</li>
+                                        <li>🚀 World Meme Domination</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="space-y-12">
-                    <!-- Phase 1 -->
-                    <div class="flex items-center justify-between">
-                        <div class="w-5/12 text-right pr-8">
+                <!-- Mobile Timeline -->
+                <div class="md:hidden">
+                    <div class="absolute left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full"></div>
+                    
+                    <div class="space-y-8 pl-16">
+                        <!-- Phase 1 Mobile -->
+                        <div class="relative">
+                            <div class="absolute -left-20 top-4 w-8 h-8 bg-cyan-400 rounded-full border-4 border-white z-10"></div>
                             <div class="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl p-6 border border-white/10">
-                                <h3 class="text-2xl font-bold mb-3 text-cyan-400">Phase 1: Genesis</h3>
-                                <ul class="text-gray-300 space-y-2">
+                                <h3 class="text-xl font-bold mb-3 text-cyan-400">Phase 1: Genesis</h3>
+                                <ul class="text-gray-300 space-y-2 text-sm">
                                     <li>✅ Token Launch & Liquidity</li>
                                     <li>✅ Community Building</li>
                                     <li>✅ Basic AI Meme Generator</li>
@@ -567,22 +654,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="w-2/12 flex justify-center">
-                            <div class="w-8 h-8 bg-cyan-400 rounded-full border-4 border-white z-10"></div>
-                        </div>
-                        <div class="w-5/12"></div>
-                    </div>
-                    
-                    <!-- Phase 2 -->
-                    <div class="flex items-center justify-between">
-                        <div class="w-5/12"></div>
-                        <div class="w-2/12 flex justify-center">
-                            <div class="w-8 h-8 bg-purple-400 rounded-full border-4 border-white z-10"></div>
-                        </div>
-                        <div class="w-5/12 pl-8">
+                        
+                        <!-- Phase 2 Mobile -->
+                        <div class="relative">
+                            <div class="absolute -left-20 top-4 w-8 h-8 bg-purple-400 rounded-full border-4 border-white z-10"></div>
                             <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-6 border border-white/10">
-                                <h3 class="text-2xl font-bold mb-3 text-purple-400">Phase 2: Evolution</h3>
-                                <ul class="text-gray-300 space-y-2">
+                                <h3 class="text-xl font-bold mb-3 text-purple-400">Phase 2: Evolution</h3>
+                                <ul class="text-gray-300 space-y-2 text-sm">
                                     <li>🔄 Advanced AI Features</li>
                                     <li>🔄 Mobile App Launch</li>
                                     <li>🔄 Partnership Announcements</li>
@@ -590,14 +668,13 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Phase 3 -->
-                    <div class="flex items-center justify-between">
-                        <div class="w-5/12 text-right pr-8">
+                        
+                        <!-- Phase 3 Mobile -->
+                        <div class="relative">
+                            <div class="absolute -left-20 top-4 w-8 h-8 bg-green-400 rounded-full border-4 border-white z-10"></div>
                             <div class="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl p-6 border border-white/10">
-                                <h3 class="text-2xl font-bold mb-3 text-green-400">Phase 3: Expansion</h3>
-                                <ul class="text-gray-300 space-y-2">
+                                <h3 class="text-xl font-bold mb-3 text-green-400">Phase 3: Expansion</h3>
+                                <ul class="text-gray-300 space-y-2 text-sm">
                                     <li>⏳ NFT Marketplace</li>
                                     <li>⏳ Cross-chain Bridge</li>
                                     <li>⏳ DAO Governance</li>
@@ -605,22 +682,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="w-2/12 flex justify-center">
-                            <div class="w-8 h-8 bg-green-400 rounded-full border-4 border-white z-10"></div>
-                        </div>
-                        <div class="w-5/12"></div>
-                    </div>
-                    
-                    <!-- Phase 4 -->
-                    <div class="flex items-center justify-between">
-                        <div class="w-5/12"></div>
-                        <div class="w-2/12 flex justify-center">
-                            <div class="w-8 h-8 bg-yellow-400 rounded-full border-4 border-white z-10"></div>
-                        </div>
-                        <div class="w-5/12 pl-8">
+                        
+                        <!-- Phase 4 Mobile -->
+                        <div class="relative">
+                            <div class="absolute -left-20 top-4 w-8 h-8 bg-yellow-400 rounded-full border-4 border-white z-10"></div>
                             <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl p-6 border border-white/10">
-                                <h3 class="text-2xl font-bold mb-3 text-yellow-400">Phase 4: Domination</h3>
-                                <ul class="text-gray-300 space-y-2">
+                                <h3 class="text-xl font-bold mb-3 text-yellow-400">Phase 4: Domination</h3>
+                                <ul class="text-gray-300 space-y-2 text-sm">
                                     <li>🚀 Global Adoption</li>
                                     <li>🚀 AI Ecosystem Expansion</li>
                                     <li>🚀 Metaverse Integration</li>
@@ -1043,5 +1111,5 @@
         // Crear ondas periódicamente
         setInterval(createWaveEffect, 3000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0b05f559df0cf',t:'MTc1NzE5MDI1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0bb10c1f07835',t:'MTc1NzE5MDY5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
