@@ -160,6 +160,54 @@
             transform: translateX(0);
         }
         
+        @media (max-width: 768px) {
+            .mobile-menu {
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(20px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .mobile-menu .menu-content {
+                text-align: center;
+            }
+            
+            .mobile-menu a {
+                display: block;
+                font-size: 2rem;
+                font-weight: 600;
+                margin: 2rem 0;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            
+            .mobile-menu a:hover {
+                color: #00d4ff;
+                transform: scale(1.1);
+            }
+            
+            .mobile-menu a::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background: linear-gradient(45deg, #00d4ff, #0099cc);
+                transition: width 0.3s ease;
+            }
+            
+            .mobile-menu a:hover::after {
+                width: 100%;
+            }
+        }
+        
         .custom-cursor {
             position: fixed;
             width: 20px;
@@ -275,14 +323,12 @@
         
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 w-64 h-full bg-black/90 backdrop-blur-md z-40">
-            <div class="p-6 pt-20">
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
-                    <a href="brainpaper.html" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
-                    <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" class="hover:text-cyan-400 transition-colors">Buy</a>
-                    <a href="community.html" class="hover:text-cyan-400 transition-colors">Community</a>
-                    <a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a>
-                </div>
+            <div class="menu-content">
+                <a href="#home" onclick="toggleMobileMenu()">Home</a>
+                <a href="brainpaper.html" onclick="toggleMobileMenu()">Brainpaper</a>
+                <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" onclick="toggleMobileMenu()">Buy</a>
+                <a href="community.html" onclick="toggleMobileMenu()">Community</a>
+                <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
             </div>
         </div>
     </nav>
@@ -741,7 +787,7 @@
                     <span class="text-2xl font-bold orbitron">$FROBRY</span>
                 </div>
                 
-                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8 mb-6 md:mb-0">
                     <a href="#home" class="hover:text-cyan-400 transition-colors hover-glow">Home</a>
                     <a href="brainpaper.html" class="hover:text-cyan-400 transition-colors hover-glow">Brainpaper</a>
                     <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" class="hover:text-cyan-400 transition-colors hover-glow">Buy</a>
@@ -1111,5 +1157,5 @@
         // Crear ondas periódicamente
         setInterval(createWaveEffect, 3000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0bb10c1f07835',t:'MTc1NzE5MDY5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b4510dc39e698a',t:'MTc1NzIyODI5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
