@@ -151,61 +151,148 @@
             51%, 100% { opacity: 0; }
         }
         
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+        /* Mobile Navigation Styles */
+        #nav-container {
+            margin-left: auto;
+            position: relative;
         }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
+
+        #nav-toggle {
+            display: block;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transform: rotate(0deg);
+            z-index: 1001;
         }
-        
-        @media (max-width: 768px) {
-            .mobile-menu {
-                width: 100vw;
-                height: 100vh;
-                background: rgba(0, 0, 0, 0.98);
-                backdrop-filter: blur(20px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .mobile-menu .menu-content {
-                text-align: center;
-            }
-            
-            .mobile-menu a {
-                display: block;
-                font-size: 2rem;
-                font-weight: 600;
-                margin: 2rem 0;
-                color: white;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                position: relative;
-            }
-            
-            .mobile-menu a:hover {
-                color: #00d4ff;
-                transform: scale(1.1);
-            }
-            
-            .mobile-menu a::after {
-                content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                height: 2px;
-                background: linear-gradient(45deg, #00d4ff, #0099cc);
-                transition: width 0.3s ease;
-            }
-            
-            .mobile-menu a:hover::after {
-                width: 100%;
-            }
+
+        #nav-toggle span {
+            background-color: white;
+            width: 100%;
+            height: 4px;
+            border-radius: 1px;
+            display: block;
+            position: absolute;
+            left: 0;
+            transition: .5s ease-in-out;
+        }
+
+        #nav-toggle span:nth-child(1) {
+            top: 4px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle span:nth-child(2) {
+            top: 14px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle span:nth-child(3) {
+            top: 24px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 3px;
+            left: 4px;
+        }
+
+        #nav-toggle.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        #nav-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 25px;
+            left: 4px;
+        }
+
+        #nav-overlay {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            border-radius: 50%;
+            transition: 1s;
+            transform: scale3d(0, 0, 0);
+        }
+
+        #nav-overlay.open {
+            transform: scale3d(1, 1, 1);
+        }
+
+        #nav-fullscreen {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: ease-in-out 0.25s;
+            transition-delay: 0s;
+            visibility: hidden;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #nav-fullscreen.open {
+            visibility: visible;
+            opacity: 1;
+            transition: ease-in-out 0.5s;
+            transition-delay: 0.25s;
+        }
+
+        #nav-fullscreen ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        #nav-fullscreen li {
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        #nav-fullscreen li:hover {
+            transform: scale(1.1);
+        }
+
+        #nav-fullscreen a {
+            color: white;
+            text-decoration: none;
+            font-size: 3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            display: block;
+        }
+
+        #nav-fullscreen a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+
+        #nav-fullscreen a::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        #nav-fullscreen a:hover::after {
+            width: 100%;
         }
         
         .custom-cursor {
@@ -313,22 +400,24 @@
                     <a href="contact.html" class="hover:text-cyan-400 transition-colors hover-glow">Contact</a>
                 </div>
                 
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 w-64 h-full bg-black/90 backdrop-blur-md z-40">
-            <div class="menu-content">
-                <a href="#home" onclick="toggleMobileMenu()">Home</a>
-                <a href="brainpaper.html" onclick="toggleMobileMenu()">Brainpaper</a>
-                <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" onclick="toggleMobileMenu()">Buy</a>
-                <a href="community.html" onclick="toggleMobileMenu()">Community</a>
-                <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
+                <!-- Mobile Menu Toggle -->
+                <div id="nav-container" class="md:hidden">
+                    <div id="nav-overlay"></div>
+                    <nav id="nav-fullscreen">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="brainpaper.html">Brainpaper</a></li>
+                            <li><a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank">Buy</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <a id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -869,10 +958,50 @@
             type();
         }
         
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
+        // Mobile Menu Functions
+        function resizeNav() {
+            const navFullscreen = document.getElementById('nav-fullscreen');
+            const navOverlay = document.getElementById('nav-overlay');
+            
+            if (navFullscreen) {
+                navFullscreen.style.height = window.innerHeight + 'px';
+            }
+            
+            if (navOverlay) {
+                const radius = Math.sqrt(Math.pow(window.innerHeight, 2) + Math.pow(window.innerWidth, 2));
+                const diameter = radius * 2;
+                navOverlay.style.width = diameter + 'px';
+                navOverlay.style.height = diameter + 'px';
+                navOverlay.style.marginTop = -radius + 'px';
+                navOverlay.style.marginLeft = -radius + 'px';
+            }
+        }
+        
+        function initMobileNav() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navOverlay = document.getElementById('nav-overlay');
+            const navFullscreen = document.getElementById('nav-fullscreen');
+            
+            if (navToggle && navOverlay && navFullscreen) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('open');
+                    navOverlay.classList.toggle('open');
+                    navFullscreen.classList.toggle('open');
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = navFullscreen.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('open');
+                        navOverlay.classList.remove('open');
+                        navFullscreen.classList.remove('open');
+                    });
+                });
+            }
+            
+            window.addEventListener('resize', resizeNav);
+            resizeNav();
         }
         
         // Smooth Scrolling
@@ -1030,6 +1159,7 @@
         // Initialize effects
         createMatrixRain();
         startTypingAnimation();
+        initMobileNav();
         
         // Add click handlers for buttons
         document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
@@ -1157,5 +1287,5 @@
         // Crear ondas periódicamente
         setInterval(createWaveEffect, 3000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b4510dc39e698a',t:'MTc1NzIyODI5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b5d59b42c11b44',t:'MTc1NzI0NDIxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
