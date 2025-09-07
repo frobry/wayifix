@@ -20,6 +20,10 @@
             overflow-x: hidden;
         }
         
+        html {
+            overflow-x: hidden;
+        }
+        
         .orbitron {
             font-family: 'Orbitron', monospace;
         }
@@ -75,6 +79,24 @@
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(0, 255, 255, 0.3);
             font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .code-block {
+                font-size: 0.75rem;
+            }
+            
+            .code-block pre {
+                white-space: pre-wrap;
+                word-break: break-all;
+            }
         }
         
         .floating-orb {
@@ -323,6 +345,18 @@
             margin: 2rem 0;
         }
         
+        @media (max-width: 768px) {
+            .meme-flow {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .meme-flow .text-4xl {
+                transform: rotate(90deg);
+                font-size: 2rem;
+            }
+        }
+        
         .meme-emoji {
             font-size: 2rem;
             animation: bounce 2s infinite;
@@ -372,6 +406,25 @@
         @media (max-width: 768px) {
             .floating-orb {
                 display: none;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .content-card {
+                margin-left: 0;
+                margin-right: 0;
+                padding: 1.5rem;
+            }
+            
+            .text-4xl {
+                font-size: 2rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -1370,5 +1423,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b6547f4306f0cf',t:'MTc1NzI0OTQwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b6692060626eeb',t:'MTc1NzI1MDI1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
