@@ -391,6 +391,99 @@
     </style>
 </head>
 <body class="text-white">
+    <!-- Loader de Inicio - Añade esto JUSTO después de la etiqueta <body> -->
+    <div id="frobryLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-crema transition-opacity duration-1000">
+        <div class="text-center">
+            <!-- Logo/Símbolo (opcional) -->
+            <div class="mb-6 mx-auto">
+                <svg class="w-20 h-20 md:w-28 md:h-28 mx-auto" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#0a0a0a" />
+                    <text x="50" y="62" font-family="Orbitron" font-size="32" font-weight="900" fill="#fff" text-anchor="middle">F</text>
+                </svg>
+            </div>
+            
+            <!-- Texto $FROBRY -->
+            <h1 class="text-5xl md:text-7xl font-black orbitron text-negro mb-4 tracking-tighter">
+                $FROBRY
+            </h1>
+            
+            <!-- Subtítulo opcional -->
+            <p class="text-lg md:text-xl text-gris oscuro orbitron opacity-0 animate-fadeIn delay-1000">
+                The AI Memelord
+            </p>
+            
+            <!-- Barra de progreso minimalista -->
+            <div class="w-48 md:w-64 h-1 bg-gris claro rounded-full mx-auto mt-8 overflow-hidden">
+                <div class="h-full bg-cyan-400 rounded-full loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* Colores personalizados */
+        .bg-crema {
+            background-color: #f5f5f0; /* Blanco crema elegante */
+        }
+        .text-negro {
+            color: #0a0a0a; /* Negro puro */
+        }
+        .bg-gris.claro {
+            background-color: #d9d9d9;
+        }
+        .text-gris.oscuro {
+            color: #666666;
+        }
+    
+        /* Animación de la barra de progreso */
+        .loader-progress {
+            width: 0%;
+            animation: loadProgress 2s ease-in-out forwards;
+        }
+    
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            50% { width: 60%; }
+            100% { width: 100%; }
+        }
+    
+        /* Animación de fade in para el subtítulo */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+    </style>
+    
+    <script>
+        // Esperar a que se cargue la página
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('frobryLoader');
+            
+            // Esperar 2 segundos y desvanecer
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                
+                // Esperar a que termine la transición y ocultar completamente
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 1000);
+                
+            }, 2000); // 2 segundos de duración
+        });
+    
+        // Por si la página tarda en cargar, mostrar el loader igualmente
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('frobryLoader');
+            loader.style.display = 'flex';
+        });
+    </script>
     <!-- Custom Cursor -->
     <div id="customCursor" class="custom-cursor"></div>
     <div id="cursorTrail" class="cursor-trail"></div>
