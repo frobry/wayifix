@@ -391,7 +391,7 @@
     </style>
 </head>
 <body class="text-white">
-    <!-- Transición entre páginas -->
+    <!-- Transición entre páginas - MEJORADO -->
     <div id="pageTransition" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black transition-opacity duration-500 opacity-0 pointer-events-none">
         <div class="text-center">
             <div class="mb-6 mx-auto">
@@ -406,68 +406,51 @@
         </div>
     </div>
     
-    <style>
-        /* Animación de fade */
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-    
-        .transition-active {
-            animation: fadeInOut 1.2s ease-in-out forwards;
-        }
-    </style>
-    
     <script>
-        // Configurar transiciones para todos los links internos
+        // AL HACER CLIC EN LINK: Fade Out + redirección
         document.addEventListener('DOMContentLoaded', function() {
-            // Seleccionar todos los links que no son externos
-            const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="."], a[href^="#"]:not([href="#"])');
+            const internalLinks = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="mailto:"]):not([href^="javascript:"])');
             const transition = document.getElementById('pageTransition');
             
             internalLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // Ignorar links que abren en nueva pestaña
-                    if (this.target === '_blank' || this.hasAttribute('download')) {
-                        return;
-                    }
-                    
-                    // Ignorar links javascript o mailto
-                    if (this.href.includes('javascript:') || this.href.includes('mailto:')) {
-                        return;
-                    }
+                    // Solo procesar links internos (que no son externos)
+                    if (this.origin !== window.location.origin) return;
                     
                     e.preventDefault();
                     const targetUrl = this.href;
                     
-                    // Mostrar transición
-                    transition.classList.remove('opacity-0');
-                    transition.classList.remove('pointer-events-none');
-                    transition.classList.add('transition-active');
+                    // 1. FADE OUT: Mostrar la transición
+                    transition.style.opacity = '1';
+                    transition.style.pointerEvents = 'all';
                     
-                    // Esperar a que la animación termine y cambiar de página
+                    // 2. Esperar 600ms (que se complete el fade out) y cambiar de página
                     setTimeout(() => {
                         window.location.href = targetUrl;
-                    }, 600); // La mitad del tiempo de la animación
+                    }, 600);
                 });
             });
         });
     
-        // Efecto de entrada al cargar la página
+        // AL CARGAR LA PÁGINA: Fade In (ocultar la transición)
         window.addEventListener('load', function() {
             const transition = document.getElementById('pageTransition');
             
-            // Mostrar brevemente al cargar
-            transition.classList.add('transition-active');
-            
-            // Ocultar después de la animación
+            // Esperar 100ms para asegurar que todo está cargado
             setTimeout(() => {
-                transition.classList.add('opacity-0');
-                transition.classList.add('pointer-events-none');
-                transition.classList.remove('transition-active');
-            }, 1200);
+                transition.style.opacity = '0';
+                transition.style.pointerEvents = 'none';
+            }, 100);
         });
+    
+        // Si la página tarda en cargar, hacer fade in después de 3 segundos máximo
+        setTimeout(() => {
+            const transition = document.getElementById('pageTransition');
+            if (transition.style.opacity !== '0') {
+                transition.style.opacity = '0';
+                transition.style.pointerEvents = 'none';
+            }
+        }, 3000);
     </script>
     
     <!-- Loader de Inicio -->
@@ -500,6 +483,22 @@
     
     <style>
         /* Colores personalizados */
+        #pageTransition {
+        background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Efecto de pulso en el texto */
+        #pageTransition h1 {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
         .bg-crema {
             background-color: #f5f5f0; /* Blanco crema elegante */
         }
