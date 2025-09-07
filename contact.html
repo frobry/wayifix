@@ -348,6 +348,85 @@
     </style>
 </head>
 <body class="text-white">
+    <!-- Transición entre páginas -->
+    <div id="pageTransition" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black transition-opacity duration-500 opacity-0 pointer-events-none">
+        <div class="text-center">
+            <div class="mb-6 mx-auto">
+                <svg class="w-24 h-24 md:w-32 md:h-32 mx-auto" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#0a0a0a" />
+                    <text x="50" y="62" font-family="Orbitron" font-size="32" font-weight="900" fill="#00d4ff" text-anchor="middle">F</text>
+                </svg>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black orbitron text-cyan-400 mb-4 tracking-tighter">
+                $FROBRY
+            </h1>
+        </div>
+    </div>
+    
+    <style>
+        /* Animación de fade */
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    
+        .transition-active {
+            animation: fadeInOut 1.2s ease-in-out forwards;
+        }
+    </style>
+    
+    <script>
+        // Configurar transiciones para todos los links internos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleccionar todos los links que no son externos
+            const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="."], a[href^="#"]:not([href="#"])');
+            const transition = document.getElementById('pageTransition');
+            
+            internalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Ignorar links que abren en nueva pestaña
+                    if (this.target === '_blank' || this.hasAttribute('download')) {
+                        return;
+                    }
+                    
+                    // Ignorar links javascript o mailto
+                    if (this.href.includes('javascript:') || this.href.includes('mailto:')) {
+                        return;
+                    }
+                    
+                    e.preventDefault();
+                    const targetUrl = this.href;
+                    
+                    // Mostrar transición
+                    transition.classList.remove('opacity-0');
+                    transition.classList.remove('pointer-events-none');
+                    transition.classList.add('transition-active');
+                    
+                    // Esperar a que la animación termine y cambiar de página
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 600); // La mitad del tiempo de la animación
+                });
+            });
+        });
+    
+        // Efecto de entrada al cargar la página
+        window.addEventListener('load', function() {
+            const transition = document.getElementById('pageTransition');
+            
+            // Mostrar brevemente al cargar
+            transition.classList.add('transition-active');
+            
+            // Ocultar después de la animación
+            setTimeout(() => {
+                transition.classList.add('opacity-0');
+                transition.classList.add('pointer-events-none');
+                transition.classList.remove('transition-active');
+            }, 1200);
+        });
+    </script>
+    
     <!-- Custom Cursor -->
     <div id="customCursor" class="custom-cursor"></div>
     <div id="cursorTrail" class="cursor-trail"></div>
