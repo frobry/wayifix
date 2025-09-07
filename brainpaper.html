@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainpaper - Frobry AI Network</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Brainpaper - $FROBRY AI Memecoin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        html {
-            overflow-x: hidden !important;
-        } 
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        @media (min-width: 769px) {
+            * {
+                cursor: none !important;
+            }
+        }
         
         body {
-            overflow-x: hidden !important;
-            font-family: 'Exo 2', sans-serif;
-            background: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             overflow-x: hidden;
         }
         
@@ -22,382 +24,575 @@
             font-family: 'Orbitron', monospace;
         }
         
-        .glow-text {
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .neon-border {
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 10px #00ffff, inset 0 0 10px rgba(0, 255, 255, 0.1);
-        }
-        
-        .circuit-bg {
-            background-image: 
-                radial-gradient(circle at 25% 25%, #00ffff22 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, #ff00ff22 2px, transparent 2px);
-            background-size: 50px 50px;
-            animation: circuitMove 20s linear infinite;
-        }
-        
-        @keyframes circuitMove {
-            0% { background-position: 0 0, 25px 25px; }
-            100% { background-position: 50px 50px, 75px 75px; }
-        }
-        
-        .matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.1;
-        }
-        
-        .matrix-char {
-            position: absolute;
-            color: #00ff00;
-            font-family: monospace;
-            font-size: 14px;
-            animation: fall linear infinite;
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-100vh); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-        
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ffff;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2), 0 0 60px rgba(0, 255, 255, 0.1);
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
         }
         
         .btn-secondary {
-            border: 2px solid #00ffff;
-            color: #00ffff;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
             transition: all 0.3s ease;
         }
         
         .btn-secondary:hover {
-            background: #00ffff;
-            color: #000;
-            box-shadow: 0 0 20px #00ffff;
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
         }
         
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .document-section {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(0, 255, 255, 0.3);
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            margin-bottom: 2rem;
-        }
-        
-        .code-block {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00ffff;
-            font-family: 'Courier New', monospace;
-            color: #00ff00;
-        }
-        
-        .toc-link {
-            color: #00ffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
         
-        .toc-link:hover {
-            color: #ff00ff;
-            text-shadow: 0 0 5px #ff00ff;
+        .content-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .neural-diagram {
-            animation: neuralPulse 3s ease-in-out infinite;
+        .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            font-family: 'Courier New', monospace;
         }
         
-        @keyframes neuralPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
         }
         
-        .progress-bar {
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
+        .floating-orb:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-orb:nth-child(2) { width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 2s; }
+        .floating-orb:nth-child(3) { width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Mobile Navigation Styles */
+        #nav-container {
+            margin-left: auto;
+            position: relative;
+        }
+
+        #nav-toggle {
+            display: block;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transform: rotate(0deg);
+            z-index: 1001;
+        }
+
+        #nav-toggle span {
+            background-color: white;
+            width: 100%;
             height: 4px;
-            border-radius: 2px;
+            border-radius: 1px;
+            display: block;
+            position: absolute;
+            left: 0;
+            transition: .5s ease-in-out;
+        }
+
+        #nav-toggle span:nth-child(1) {
+            top: 4px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle span:nth-child(2) {
+            top: 14px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle span:nth-child(3) {
+            top: 24px;
+            transform-origin: left center;
+        }
+
+        #nav-toggle.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 3px;
+            left: 4px;
+        }
+
+        #nav-toggle.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        #nav-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 25px;
+            left: 4px;
+        }
+
+        #nav-overlay {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            border-radius: 50%;
+            transition: 1s;
+            transform: scale3d(0, 0, 0);
+        }
+
+        #nav-overlay.open {
+            transform: scale3d(1, 1, 1);
+        }
+
+        #nav-fullscreen {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: ease-in-out 0.25s;
+            transition-delay: 0s;
+            visibility: hidden;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #nav-fullscreen.open {
+            visibility: visible;
+            opacity: 1;
+            transition: ease-in-out 0.5s;
+            transition-delay: 0.25s;
+        }
+
+        #nav-fullscreen ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        #nav-fullscreen li {
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        #nav-fullscreen li:hover {
+            transform: translateX(10px);
+        }
+
+        #nav-fullscreen a {
+            color: white;
+            text-decoration: none;
+            font-size: 3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            padding-left: 10px;
+        }
+
+        #nav-fullscreen a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+
+        #nav-fullscreen a::after {
+            content: '';
+            width: 22px;
+            height: 22px;
+            border-right: 2px solid #666666;
+            border-bottom: 2px solid #666666;
+            transform: rotate(-45deg) translateX(-10px);
+            display: inline-block;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        #nav-fullscreen a:hover::after {
+            border-right-color: #00d4ff;
+            border-bottom-color: #00d4ff;
+            transform: rotate(-45deg) translateX(-7px);
         }
         
-        .tech-spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
         }
         
-        .hologram-effect {
+        .custom-cursor.clickable {
+            background: rgba(255, 0, 255, 0.8);
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+        }
+        
+        @media (max-width: 768px) {
+            .custom-cursor, .cursor-trail {
+                display: none !important;
+            }
+        }
+        
+        .hover-glow:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+        
+        .toc-item {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .toc-item:hover {
+            border-left-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .section-header {
             position: relative;
             overflow: hidden;
         }
         
-        .hologram-effect::before {
+        .section-header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            animation: hologramScan 3s linear infinite;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
         
-        @keyframes hologramScan {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        .section-header:hover::before {
+            left: 100%;
+        }
+        
+        .meme-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .meme-emoji {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .meme-emoji:nth-child(2) { animation-delay: 0.2s; }
+        .meme-emoji:nth-child(3) { animation-delay: 0.4s; }
+        .meme-emoji:nth-child(4) { animation-delay: 0.6s; }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .tokenomics-bar {
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .tokenomics-fill {
+            height: 100%;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tokenomics-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-orb {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="text-white">
-    <!-- Matrix Rain Effect -->
-    <div class="matrix-rain" id="matrixRain"></div>
+    <!-- Custom Cursor -->
+    <div id="customCursor" class="custom-cursor"></div>
+    <div id="cursorTrail" class="cursor-trail"></div>
     
-    <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-cyan-500/30">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 relative">
-                    <img src="logo.png" alt="Frobry Logo" class="w-full h-full object-contain rounded-lg" onerror="this.src=''; this.alt='Logo no disponible'; this.style.display='none';">
-                </div>
-                <span class="orbitron text-2xl font-bold glow-text">frobry</span>
-            </div>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#brainpaper" class="text-cyan-400 transition-colors">Brainpaper</a>
-                <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
-                <a href="community.html" class="hover:text-cyan-400 transition-colors">Community</a>
-                <a href="contact.html">
-                    <button class="btn-secondary px-6 py-2 rounded-full font-semibold">Contact</button>
-                </a>
-            </div>
-            
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-cyan-400" onclick="toggleMobileMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-black/95 backdrop-blur-md border-l border-cyan-500/30 p-6 md:hidden shadow-2xl" id="mobileMenu">
-            <button class="absolute top-4 right-4 text-cyan-400" onclick="toggleMobileMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div class="mt-12 space-y-6">
-                <a href="index.html" class="block hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#brainpaper" class="block text-cyan-400 transition-colors">Brainpaper</a>
-                <a href="#buy" class="block hover:text-cyan-400 transition-colors">Buy</a>
-                <a href="community.html" class="block hover:text-cyan-400 transition-colors">Community</a>
-                <a href="contact.html">
-                    <button class="btn-secondary px-6 py-2 rounded-full font-semibold mt-4">Contact</button>
-                </a>
-            </div>
-        </div>
-    </header>
+    <!-- Floating Elements -->
+    <div class="floating-orb"></div>
+    <div class="floating-orb"></div>
+    <div class="floating-orb"></div>
     
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative circuit-bg pt-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
-        
-        <!-- Floating Particles -->
-        <div class="absolute inset-0">
-            <div class="particle" style="left: 15%; top: 25%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 85%; top: 35%; animation-delay: 2s;"></div>
-            <div class="particle" style="left: 65%; top: 65%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 25%; top: 75%; animation-delay: 1s;"></div>
-            <div class="particle" style="left: 95%; top: 15%; animation-delay: 3s;"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-6xl mx-auto">
-                <!-- Header Section -->
-                <div class="text-center mb-16" style="padding-top: 100px;">
-                    <h1 class="orbitron text-4xl md:text-6xl font-black mb-6 glow-text">
-                        BRAIN<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">PAPER</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 mb-8">
-                        The Fun & Honest Guide to Our AI Memecoin Adventure
-                    </p>
-                    <div class="flex justify-center space-x-4 mb-12">
-                        <button onclick="downloadPDF()" class="btn-primary px-8 py-3 rounded-full text-black font-bold orbitron">
-                            DOWNLOAD PDF
-                        </button>
-                        <button onclick="scrollToSection('abstract')" class="btn-secondary px-8 py-3 rounded-full font-bold orbitron">
-                            READ ONLINE
-                        </button>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center glow-effect overflow-hidden">
+                        <img src="logo.png" alt="$FROBRY Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center" style="display: none;">
+                            <span class="text-black font-bold orbitron">F</span>
+                        </div>
                     </div>
+                    <span class="text-2xl font-bold orbitron hover-glow">$FROBRY</span>
                 </div>
                 
-                <!-- Table of Contents -->
-                <div class="hologram-effect neon-border rounded-lg p-8 bg-black/50 backdrop-blur-sm mb-12">
-                    <h2 class="orbitron text-2xl font-bold text-cyan-400 mb-6">TABLE OF CONTENTS</h2>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="space-y-3">
-                            <a href="#abstract" class="toc-link block hover:pl-4 transition-all">1. What is Frobry?</a>
-                            <a href="#architecture" class="toc-link block hover:pl-4 transition-all">2. The AI Meme Dream</a>
-                            <a href="#specifications" class="toc-link block hover:pl-4 transition-all">3. Tokenomics (The Fun Stuff)</a>
-                            <a href="#algorithms" class="toc-link block hover:pl-4 transition-all">4. Community & Vibes</a>
-                        </div>
-                        <div class="space-y-3">
-                            <a href="#performance" class="toc-link block hover:pl-4 transition-all">5. Roadmap (Our Journey)</a>
-                            <a href="#security" class="toc-link block hover:pl-4 transition-all">6. Risks & Reality Check</a>
-                            <a href="#roadmap" class="toc-link block hover:pl-4 transition-all">7. How to Join the Fun</a>
-                            <a href="#conclusion" class="toc-link block hover:pl-4 transition-all">8. Final Thoughts</a>
-                        </div>
-                    </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="hover:text-cyan-400 transition-colors hover-glow">Home</a>
+                    <a href="#brainpaper" class="hover:text-cyan-400 transition-colors hover-glow">Brainpaper</a>
+                    <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" class="hover:text-cyan-400 transition-colors hover-glow">Buy</a>
+                    <a href="community.html" class="hover:text-cyan-400 transition-colors hover-glow">Community</a>
+                    <a href="contact.html" class="hover:text-cyan-400 transition-colors hover-glow">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <div id="nav-container" class="md:hidden">
+                    <div id="nav-overlay"></div>
+                    <nav id="nav-fullscreen">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#brainpaper">Brainpaper</a></li>
+                            <li><a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank">Buy</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <a id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="brainpaper" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-black orbitron mb-6 hero-gradient">
+                    BRAINPAPER
+                </h1>
+                <p class="text-2xl md:text-3xl mb-8 text-cyan-400">
+                    The Fun & Honest Guide to Our AI Memecoin Adventure
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                    <a href="#" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold glow-effect">
+                        📄 Download PDF
+                    </a>
+                    <a href="#content" class="btn-secondary px-8 py-4 rounded-full text-lg font-semibold">
+                        📖 Read Online
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Document Content -->
-    <section class="py-20 relative">
+    <!-- Table of Contents -->
+    <section id="toc" class="py-20 relative">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto">
-                
-                <!-- What is Frobry -->
-                <div id="abstract" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">1. WHAT IS FROBRY?</h2>
-                    <div class="space-y-4 text-gray-300 leading-relaxed">
-                        <p>
-                            Let's be real - Frobry is a memecoin with AI vibes. We're not claiming to have built 
-                            the next AGI or solved consciousness (yet 😉). We're a fun community that loves AI, 
-                            memes, and the wild world of crypto. Think of us as the friendly neighborhood AI 
-                            enthusiasts who decided to make a token about it.
+                <h2 class="text-4xl font-bold orbitron mb-12 text-center text-cyan-400 section-header">
+                    Table of Contents
+                </h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a href="#section1" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">1.</span> What is Frobry?
+                    </a>
+                    <a href="#section2" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">2.</span> The AI Meme Dream
+                    </a>
+                    <a href="#section3" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">3.</span> Tokenomics (The Fun Stuff)
+                    </a>
+                    <a href="#section4" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">4.</span> Community & Vibes
+                    </a>
+                    <a href="#section5" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">5.</span> Roadmap (Our Journey)
+                    </a>
+                    <a href="#section6" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">6.</span> Risks & Reality Check
+                    </a>
+                    <a href="#section7" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">7.</span> How to Join the Fun
+                    </a>
+                    <a href="#section8" class="toc-item content-card rounded-lg p-4 block hover:no-underline">
+                        <span class="text-cyan-400 font-bold">8.</span> Final Thoughts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Content Sections -->
+    <div id="content" class="relative">
+        
+        <!-- Section 1: What is Frobry? -->
+        <section id="section1" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        1. What is Frobry?
+                    </h2>
+                    <div class="content-card rounded-2xl p-8 mb-8">
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            Let's be real - Frobry is a memecoin with AI vibes. We're not claiming to have built the next AGI or solved consciousness (yet 😉). We're a fun community that loves AI, memes, and the wild world of crypto. Think of us as the friendly neighborhood AI enthusiasts who decided to make a token about it.
                         </p>
-                        <p>
-                            Our "AI" is currently powered by good vibes, community creativity, and maybe some 
-                            ChatGPT prompts. But hey, we're learning, growing, and having fun while we're at it! 
-                            The goal is to build something cool together, one meme at a time.
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            Our "AI" is currently powered by good vibes, community creativity, and maybe some ChatGPT prompts. But hey, we're learning, growing, and having fun while we're at it! The goal is to build something cool together, one meme at a time.
                         </p>
-                        <div class="bg-black/50 border-l-4 border-cyan-400 p-4 mt-6">
-                            <p class="text-cyan-400 font-semibold">Honest Truth:</p>
-                            <p>We're a memecoin first, AI researchers second, but dreamers always! 🚀</p>
+                        <div class="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-3">Honest Truth:</h3>
+                            <p class="text-lg text-white">
+                                We're a memecoin first, AI researchers second, but dreamers always! 🚀
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- The AI Meme Dream -->
-                <div id="architecture" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">2. THE AI MEME DREAM</h2>
+            </div>
+        </section>
+        
+        <!-- Section 2: The AI Meme Dream -->
+        <section id="section2" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        2. The AI Meme Dream
+                    </h2>
                     
-                    <!-- Meme Architecture Diagram -->
-                    <div class="mb-8 flex justify-center">
-                        <div class="neural-diagram">
-                            <svg width="600" height="400" viewBox="0 0 600 400" class="max-w-full h-auto">
-                                <!-- Background -->
-                                <rect width="600" height="400" fill="rgba(0,0,0,0.8)" stroke="#00ffff" stroke-width="2"/>
-                                
-                                <!-- Input Layer -->
-                                <g>
-                                    <text x="50" y="30" fill="#00ffff" class="text-sm font-bold">MEMES IN</text>
-                                    <circle cx="80" cy="80" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="70" y="85" fill="#00ffff" class="text-xs">😂</text>
-                                    <circle cx="80" cy="120" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="70" y="125" fill="#00ffff" class="text-xs">🚀</text>
-                                    <circle cx="80" cy="160" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="70" y="165" fill="#00ffff" class="text-xs">🤖</text>
-                                    <circle cx="80" cy="200" r="15" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="70" y="205" fill="#00ffff" class="text-xs">💎</text>
-                                </g>
-                                
-                                <!-- Processing -->
-                                <g>
-                                    <text x="200" y="30" fill="#ff00ff" class="text-sm font-bold">COMMUNITY VIBES</text>
-                                    <circle cx="220" cy="80" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="120" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="220" cy="160" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    
-                                    <circle cx="320" cy="100" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                    <circle cx="320" cy="140" r="12" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                                </g>
-                                
-                                <!-- Fun Layer -->
-                                <g>
-                                    <text x="400" y="30" fill="#00ff00" class="text-sm font-bold">FUN ALGORITHM</text>
-                                    <circle cx="450" cy="100" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
-                                    <text x="440" y="105" fill="#00ff00" class="text-xs">FUN</text>
-                                    <circle cx="450" cy="160" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
-                                    <text x="440" y="165" fill="#00ff00" class="text-xs">HODL</text>
-                                </g>
-                                
-                                <!-- Output -->
-                                <g>
-                                    <text x="520" y="30" fill="#00ffff" class="text-sm font-bold">TO THE MOON</text>
-                                    <rect x="530" y="120" width="40" height="40" fill="none" stroke="#00ffff" stroke-width="2"/>
-                                    <text x="545" y="145" fill="#00ffff" class="text-xs">🌙</text>
-                                </g>
-                                
-                                <!-- Connections -->
-                                <g stroke="#ffffff" stroke-width="1" opacity="0.6">
-                                    <line x1="95" y1="80" x2="205" y2="80"/>
-                                    <line x1="95" y1="120" x2="205" y2="120"/>
-                                    <line x1="95" y1="160" x2="205" y2="160"/>
-                                    
-                                    <line x1="232" y1="100" x2="308" y2="120"/>
-                                    <line x1="232" y1="140" x2="308" y2="140"/>
-                                    
-                                    <line x1="340" y1="120" x2="430" y2="130"/>
-                                    <line x1="340" y1="140" x2="430" y2="150"/>
-                                    
-                                    <line x1="470" y1="130" x2="530" y2="140"/>
-                                </g>
-                            </svg>
+                    <!-- Meme Flow Diagram -->
+                    <div class="content-card rounded-2xl p-8 mb-8 text-center">
+                        <div class="meme-flow">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-cyan-400 mb-2">MEMES IN</div>
+                                <div class="meme-emoji">😂</div>
+                                <div class="meme-emoji">🚀</div>
+                                <div class="meme-emoji">🤖</div>
+                                <div class="meme-emoji">💎</div>
+                            </div>
+                            <div class="text-4xl text-cyan-400">→</div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-purple-400 mb-2">COMMUNITY VIBES</div>
+                                <div class="text-lg text-gray-300">FUN ALGORITHM</div>
+                            </div>
+                            <div class="text-4xl text-cyan-400">→</div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-400 mb-2">FUN</div>
+                                <div class="text-lg text-gray-300">HODL</div>
+                                <div class="text-lg text-gray-300">TO THE MOON</div>
+                                <div class="meme-emoji">🌙</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="space-y-6 text-gray-300">
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Our "Advanced" Technology Stack</h3>
-                            <ul class="space-y-2 ml-6">
-                                <li>• <strong class="text-cyan-400">Meme Processing Units:</strong> Powered by community creativity</li>
-                                <li>• <strong class="text-cyan-400">Vibe Detection Algorithm:</strong> Checks if the vibes are immaculate</li>
-                                <li>• <strong class="text-cyan-400">HODL Memory Bank:</strong> Never forgets diamond hands</li>
-                                <li>• <strong class="text-cyan-400">Fun Maximizer:</strong> Optimizes for maximum enjoyment</li>
-                            </ul>
+                    <!-- Technology Stack -->
+                    <div class="content-card rounded-2xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-6">Our "Advanced" Technology Stack</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🧠</span>
+                                    <div>
+                                        <div class="font-semibold text-white">Meme Processing Units</div>
+                                        <div class="text-sm text-gray-400">Powered by community creativity</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">✨</span>
+                                    <div>
+                                        <div class="font-semibold text-white">Vibe Detection Algorithm</div>
+                                        <div class="text-sm text-gray-400">Checks if the vibes are immaculate</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">💎</span>
+                                    <div>
+                                        <div class="font-semibold text-white">HODL Memory Bank</div>
+                                        <div class="text-sm text-gray-400">Never forgets diamond hands</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🎯</span>
+                                    <div>
+                                        <div class="font-semibold text-white">Fun Maximizer</div>
+                                        <div class="text-sm text-gray-400">Optimizes for maximum enjoyment</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="code-block rounded-lg p-4">
-                            <pre class="text-sm">
-class FrobryAI:
+                    </div>
+                    
+                    <!-- Code Block -->
+                    <div class="code-block rounded-xl p-6 text-sm">
+                        <div class="text-green-400 mb-4"># Our AI Implementation (Totally Legit)</div>
+                        <pre class="text-cyan-300"><code>class FrobryAI:
     def __init__(self):
         self.memes = []
         self.vibes = "immaculate"
@@ -407,345 +602,617 @@ class FrobryAI:
         if self.check_vibes(meme):
             return "LFG! 🚀"
         else:
-            return "Not financial advice 😅"
-                            </pre>
-                        </div>
+            return "Not financial advice 😅"</code></pre>
                     </div>
                 </div>
-                
-                <!-- Tokenomics -->
-                <div id="specifications" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">3. TOKENOMICS (THE FUN STUFF)</h2>
+            </div>
+        </section>
+        
+        <!-- Section 3: Tokenomics -->
+        <section id="section3" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        3. Tokenomics (The Fun Stuff)
+                    </h2>
                     
-                    <div class="tech-spec-grid">
-                        <div class="bg-black/50 border border-cyan-400/30 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-4">Token Details</h3>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span>Total Supply:</span>
-                                    <span class="text-cyan-400">1,000,000,000 FROBRY</span>
+                    <!-- Token Details -->
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div class="content-card rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-6">Token Details</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-2 border-b border-white/10">
+                                    <span class="text-gray-300">Total Supply:</span>
+                                    <span class="font-bold text-white">1,000,000,000 FROBRY</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Decimals:</span>
-                                    <span class="text-cyan-400">18</span>
+                                <div class="flex justify-between items-center py-2 border-b border-white/10">
+                                    <span class="text-gray-300">Decimals:</span>
+                                    <span class="font-bold text-cyan-400">18</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Network:</span>
-                                    <span class="text-cyan-400">Solana</span>
+                                <div class="flex justify-between items-center py-2 border-b border-white/10">
+                                    <span class="text-gray-300">Network:</span>
+                                    <span class="font-bold text-purple-400">Solana</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Tax:</span>
-                                    <span class="text-cyan-400">0% (We're nice like that)</span>
+                                <div class="flex justify-between items-center py-2">
+                                    <span class="text-gray-300">Tax:</span>
+                                    <span class="font-bold text-green-400">0% (We're nice like that)</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="bg-black/50 border border-purple-400/30 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-purple-400 mb-4">Distribution</h3>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span>Liquidity Pool:</span>
-                                    <span class="text-purple-400">90%</span>
+                        <div class="content-card rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-6">Distribution</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Liquidity Pool</span>
+                                        <span class="font-bold text-cyan-400">90%</span>
+                                    </div>
+                                    <div class="tokenomics-bar">
+                                        <div class="tokenomics-fill bg-gradient-to-r from-cyan-400 to-blue-500" style="width: 90%"></div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Community Events:</span>
-                                    <span class="text-purple-400">5%</span>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Community Events</span>
+                                        <span class="font-bold text-purple-400">5%</span>
+                                    </div>
+                                    <div class="tokenomics-bar">
+                                        <div class="tokenomics-fill bg-gradient-to-r from-purple-400 to-pink-500" style="width: 5%"></div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Development:</span>
-                                    <span class="text-purple-400">3%</span>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Development</span>
+                                        <span class="font-bold text-green-400">3%</span>
+                                    </div>
+                                    <div class="tokenomics-bar">
+                                        <div class="tokenomics-fill bg-gradient-to-r from-green-400 to-emerald-500" style="width: 3%"></div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span>Marketing/Memes:</span>
-                                    <span class="text-purple-400">2%</span>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Marketing/Memes</span>
+                                        <span class="font-bold text-orange-400">2%</span>
+                                    </div>
+                                    <div class="tokenomics-bar">
+                                        <div class="tokenomics-fill bg-gradient-to-r from-orange-400 to-red-500" style="width: 2%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
-                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Fair Launch Promise</h3>
-                        <p class="text-gray-300">
+                    <!-- Fair Launch Promise -->
+                    <div class="content-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-green-400 mb-4">Fair Launch Promise</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
                             No presale, no team allocation, no VC dumps. Just pure community vibes and fair distribution. 
                             We burned the liquidity and threw away the keys (not literally, but you get it). 
                             This is as fair as it gets in the memecoin space! 🔥
                         </p>
                     </div>
                 </div>
-                
-                <!-- Community & Vibes -->
-                <div id="algorithms" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">4. COMMUNITY & VIBES</h2>
+            </div>
+        </section>
+        
+        <!-- Section 4: Community & Vibes -->
+        <section id="section4" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        4. Community & Vibes
+                    </h2>
                     
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-4">The Frobry Family</h3>
-                            <p class="text-gray-300 mb-4">
-                                We're building more than just a token - we're creating a community of AI enthusiasts, 
-                                meme lovers, and crypto degens who believe in having fun while we're at it. No toxic 
-                                behavior, no pump and dump schemes, just good vibes and diamond hands! 💎🙌
-                            </p>
-                            <div class="code-block rounded-lg p-4">
-                                <pre class="text-sm">
-function joinCommunity(person) {
+                    <!-- The Frobry Family -->
+                    <div class="content-card rounded-2xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4">The Frobry Family</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            We're building more than just a token - we're creating a community of AI enthusiasts, 
+                            meme lovers, and crypto degens who believe in having fun while we're at it. 
+                            No toxic behavior, no pump and dump schemes, just good vibes and diamond hands! 💎🙌
+                        </p>
+                        
+                        <!-- Code Block -->
+                        <div class="code-block rounded-xl p-6 text-sm">
+                            <pre class="text-cyan-300"><code>function joinCommunity(person) {
     if (person.vibes === "good" && person.loves_memes === true) {
         community.add(person);
         return "Welcome to the Frobry family! 🎉";
     }
     return "Work on those vibes first! 😊";
-}
-                                </pre>
-                            </div>
+}</code></pre>
                         </div>
-                        
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-4">Community Activities</h3>
-                            <div class="grid md:grid-cols-2 gap-4 text-gray-300">
-                                <div class="bg-black/50 border border-cyan-400/30 rounded-lg p-4">
-                                    <h4 class="text-cyan-400 font-semibold mb-2">🎨 Meme Contests</h4>
-                                    <p class="text-sm">Weekly meme competitions with FROBRY prizes for the most creative content!</p>
+                    </div>
+                    
+                    <!-- Community Activities -->
+                    <div class="content-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-6">Community Activities</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <span class="text-3xl">🎨</span>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-2">Meme Contests</h4>
+                                        <p class="text-gray-300 text-sm">Weekly meme competitions with FROBRY prizes for the most creative content!</p>
+                                    </div>
                                 </div>
-                                <div class="bg-black/50 border border-purple-400/30 rounded-lg p-4">
-                                    <h4 class="text-purple-400 font-semibold mb-2">🤖 AI Discussions</h4>
-                                    <p class="text-sm">Chat about the latest AI developments and share cool projects.</p>
+                                <div class="flex items-start space-x-4">
+                                    <span class="text-3xl">🤖</span>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-2">AI Discussions</h4>
+                                        <p class="text-gray-300 text-sm">Chat about the latest AI developments and share cool projects.</p>
+                                    </div>
                                 </div>
-                                <div class="bg-black/50 border border-green-400/30 rounded-lg p-4">
-                                    <h4 class="text-green-400 font-semibold mb-2">🎮 Community Games</h4>
-                                    <p class="text-sm">Fun games and challenges to keep the community engaged.</p>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <span class="text-3xl">🎮</span>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-2">Community Games</h4>
+                                        <p class="text-gray-300 text-sm">Fun games and challenges to keep the community engaged.</p>
+                                    </div>
                                 </div>
-                                <div class="bg-black/50 border border-yellow-400/30 rounded-lg p-4">
-                                    <h4 class="text-yellow-400 font-semibold mb-2">📚 Learning Together</h4>
-                                    <p class="text-sm">Share resources and learn about AI, crypto, and technology together.</p>
+                                <div class="flex items-start space-x-4">
+                                    <span class="text-3xl">📚</span>
+                                    <div>
+                                        <h4 class="font-bold text-white mb-2">Learning Together</h4>
+                                        <p class="text-gray-300 text-sm">Share resources and learn about AI, crypto, and technology together.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Roadmap -->
-                <div id="performance" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">5. ROADMAP (OUR JOURNEY)</h2>
+            </div>
+        </section>
+        
+        <!-- Section 5: Roadmap -->
+        <section id="section5" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        5. Roadmap (Our Journey)
+                    </h2>
                     
+                    <!-- Roadmap Phases -->
                     <div class="space-y-8">
-                        <div class="border-l-4 border-cyan-400 pl-6">
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-2">Phase 1: Launch & Community Building 🚀</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• ✅ Token creation and fair launch</li>
-                                <li>• ✅ Website and social media setup</li>
-                                <li>• 🔄 Growing our community to 1000+ members</li>
-                                <li>• 🔄 First meme contest and community events</li>
-                            </ul>
+                        <!-- Phase 1 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🚀</span>
+                                <h3 class="text-2xl font-bold text-cyan-400">Phase 1: Launch & Community Building</h3>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg border border-green-500/30">
+                                    <span class="text-green-400 text-xl">✅</span>
+                                    <span class="text-white">Token creation and fair launch</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg border border-green-500/30">
+                                    <span class="text-green-400 text-xl">✅</span>
+                                    <span class="text-white">Website and social media setup</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                                    <span class="text-yellow-400 text-xl">🔄</span>
+                                    <span class="text-white">Growing our community to 1000+ members</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                                    <span class="text-yellow-400 text-xl">🔄</span>
+                                    <span class="text-white">First meme contest and community events</span>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="border-l-4 border-purple-400 pl-6">
-                            <h3 class="text-lg font-semibold text-purple-400 mb-2">Phase 2: Fun Features & Partnerships 🎮</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• 📅 Community voting system for decisions</li>
-                                <li>• 📅 Simple AI-powered meme generator</li>
-                                <li>• 📅 Partnerships with other fun projects</li>
-                                <li>• 📅 NFT collection (if community wants it)</li>
-                            </ul>
+                        <!-- Phase 2 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🎮</span>
+                                <h3 class="text-2xl font-bold text-purple-400">Phase 2: Fun Features & Partnerships</h3>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Community voting system for decisions</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Simple AI-powered meme generator</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Partnerships with other fun projects</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">NFT collection (if community wants it)</span>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="border-l-4 border-green-400 pl-6">
-                            <h3 class="text-lg font-semibold text-green-400 mb-2">Phase 3: Actual AI Integration 🤖</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• 📅 Real AI chatbot for the community</li>
-                                <li>• 📅 AI-powered content creation tools</li>
-                                <li>• 📅 Educational AI workshops</li>
-                                <li>• 📅 Open-source AI projects</li>
-                            </ul>
+                        <!-- Phase 3 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🤖</span>
+                                <h3 class="text-2xl font-bold text-green-400">Phase 3: Actual AI Integration</h3>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Real AI chatbot for the community</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">AI-powered content creation tools</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Educational AI workshops</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Open-source AI projects</span>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="border-l-4 border-yellow-400 pl-6">
-                            <h3 class="text-lg font-semibold text-yellow-400 mb-2">Phase 4: The Moon & Beyond 🌙</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• 📅 Major exchange listings (if we make it)</li>
-                                <li>• 📅 AI research funding program</li>
-                                <li>• 📅 Global Frobry meetups</li>
-                                <li>• 📅 Who knows? The community decides!</li>
-                            </ul>
+                        <!-- Phase 4 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🌙</span>
+                                <h3 class="text-2xl font-bold text-yellow-400">Phase 4: The Moon & Beyond</h3>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Major exchange listings (if we make it)</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">AI research funding program</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Global Frobry meetups</span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                                    <span class="text-blue-400 text-xl">📅</span>
+                                    <span class="text-white">Who knows? The community decides!</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
-                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Community-Driven Development</h3>
-                        <p class="text-gray-300">
-                            This roadmap is flexible! We'll adapt based on community feedback, market conditions, 
-                            and what's actually fun and valuable. No promises of lambos, just promises of good times! 🎉
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Risks & Reality Check -->
-                <div id="security" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">6. RISKS & REALITY CHECK</h2>
-                    
-                    <div class="space-y-6 text-gray-300">
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">Let's Be Honest About Risks</h3>
-                            <p>
-                                Memecoins are risky, and we won't pretend otherwise. FROBRY could go to zero, 
-                                the market could crash, or people might just lose interest. We're not financial 
-                                advisors, and this isn't financial advice. Only invest what you can afford to lose!
+                        
+                        <!-- Community-Driven Development -->
+                        <div class="content-card rounded-2xl p-8 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/30">
+                            <h3 class="text-2xl font-bold text-purple-400 mb-4">Community-Driven Development</h3>
+                            <p class="text-lg text-gray-300 leading-relaxed">
+                                This roadmap is flexible! We'll adapt based on community feedback, market conditions, 
+                                and what's actually fun and valuable. No promises of lambos, just promises of good times! 🎉
                             </p>
                         </div>
-                        
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-400 mb-3">What We Promise vs Reality</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="bg-green-900/20 border border-green-500/50 rounded-lg p-4">
-                                    <h4 class="text-green-400 font-semibold mb-2">✅ What We Promise:</h4>
-                                    <ul class="space-y-1 text-sm">
-                                        <li>• Transparent communication</li>
-                                        <li>• Fun community activities</li>
-                                        <li>• No rug pulls or scams</li>
-                                        <li>• Honest development updates</li>
-                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 6: Risks & Reality Check -->
+        <section id="section6" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        6. Risks & Reality Check
+                    </h2>
+                    
+                    <!-- Let's Be Honest About Risks -->
+                    <div class="content-card rounded-2xl p-8 mb-8 bg-red-500/10 border-red-400/30">
+                        <h3 class="text-2xl font-bold text-red-400 mb-4">Let's Be Honest About Risks</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Memecoins are risky, and we won't pretend otherwise. FROBRY could go to zero, 
+                            the market could crash, or people might just lose interest. We're not financial advisors, 
+                            and this isn't financial advice. Only invest what you can afford to lose!
+                        </p>
+                    </div>
+                    
+                    <!-- What We Promise vs Reality -->
+                    <div class="content-card rounded-2xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-6">What We Promise vs Reality</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- What We Promise -->
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400 mb-4 flex items-center">
+                                    <span class="text-2xl mr-2">✅</span> What We Promise:
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg">
+                                        <span class="text-green-400">•</span>
+                                        <span class="text-white">Transparent communication</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg">
+                                        <span class="text-green-400">•</span>
+                                        <span class="text-white">Fun community activities</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg">
+                                        <span class="text-green-400">•</span>
+                                        <span class="text-white">No rug pulls or scams</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-green-500/20 rounded-lg">
+                                        <span class="text-green-400">•</span>
+                                        <span class="text-white">Honest development updates</span>
+                                    </div>
                                 </div>
-                                <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-4">
-                                    <h4 class="text-red-400 font-semibold mb-2">❌ What We DON'T Promise:</h4>
-                                    <ul class="space-y-1 text-sm">
-                                        <li>• Guaranteed profits or "moon"</li>
-                                        <li>• Revolutionary AI breakthroughs</li>
-                                        <li>• Exchange listings</li>
-                                        <li>• Lambos (sorry!)</li>
-                                    </ul>
+                            </div>
+                            
+                            <!-- What We DON'T Promise -->
+                            <div>
+                                <h4 class="text-xl font-bold text-red-400 mb-4 flex items-center">
+                                    <span class="text-2xl mr-2">❌</span> What We DON'T Promise:
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-red-500/20 rounded-lg">
+                                        <span class="text-red-400">•</span>
+                                        <span class="text-white">Guaranteed profits or "moon"</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-red-500/20 rounded-lg">
+                                        <span class="text-red-400">•</span>
+                                        <span class="text-white">Revolutionary AI breakthroughs</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-red-500/20 rounded-lg">
+                                        <span class="text-red-400">•</span>
+                                        <span class="text-white">Exchange listings</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-red-500/20 rounded-lg">
+                                        <span class="text-red-400">•</span>
+                                        <span class="text-white">Lambos (sorry!)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Important Disclaimers -->
+                    <div class="content-card rounded-2xl p-8 bg-yellow-500/10 border-yellow-400/30">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-4 flex items-center">
+                            <span class="text-2xl mr-2">⚠️</span> Important Disclaimers:
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 mt-1">•</span>
+                                <span class="text-gray-300">This is a memecoin for entertainment purposes</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 mt-1">•</span>
+                                <span class="text-gray-300">Past performance doesn't predict future results</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 mt-1">•</span>
+                                <span class="text-gray-300">Crypto markets are extremely volatile</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 mt-1">•</span>
+                                <span class="text-gray-300">Do your own research (DYOR) always!</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 mt-1">•</span>
+                                <span class="text-gray-300">We're learning as we go - no experts here!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 7: How to Join the Fun -->
+        <section id="section7" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        7. How to Join the Fun
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Step 1 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🪙</span>
+                                <h3 class="text-2xl font-bold text-cyan-400">Step 1: Get Some FROBRY</h3>
+                            </div>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    <span>Set up a Solana wallet (Phantom, Solflare, etc.)</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    <span>Get some SOL for transaction fees</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    <span>Use Jupiter, Raydium, or other DEX to swap</span>
+                                </div>
+                                <div class="bg-black/50 rounded-lg p-4 mt-4">
+                                    <div class="text-sm text-gray-400 mb-2">Contract:</div>
+                                    <div class="text-cyan-400 font-mono text-sm break-all">
+                                        Chjh9da4ZPtzpkQXkq4PxaEm644LZ9BUoNGWiBoz1nWi
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-4">
-                            <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Important Disclaimers:</h4>
-                            <ul class="space-y-1 text-sm">
-                                <li>• This is a memecoin for entertainment purposes</li>
-                                <li>• Past performance doesn't predict future results</li>
-                                <li>• Crypto markets are extremely volatile</li>
-                                <li>• Do your own research (DYOR) always!</li>
-                                <li>• We're learning as we go - no experts here!</li>
-                            </ul>
+                        <!-- Step 2 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">👥</span>
+                                <h3 class="text-2xl font-bold text-purple-400">Step 2: Join Our Community</h3>
+                            </div>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-purple-400 mt-1">•</span>
+                                    <span>Follow us on Instagram for updates</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-purple-400 mt-1">•</span>
+                                    <span>Join our Telegram for daily chats</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-purple-400 mt-1">•</span>
+                                    <span>Check out our Discord for deeper discussions</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-purple-400 mt-1">•</span>
+                                    <span>Follow our Instagram for memes and fun content</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🎉</span>
+                                <h3 class="text-2xl font-bold text-green-400">Step 3: Participate & Have Fun</h3>
+                            </div>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-green-400 mt-1">•</span>
+                                    <span>Share memes and get rewarded</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-green-400 mt-1">•</span>
+                                    <span>Participate in community votes</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-green-400 mt-1">•</span>
+                                    <span>Join our weekly events and contests</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-green-400 mt-1">•</span>
+                                    <span>Help spread good vibes and positivity</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="content-card rounded-2xl p-8">
+                            <div class="flex items-center mb-6">
+                                <span class="text-4xl mr-4">🚀</span>
+                                <h3 class="text-2xl font-bold text-yellow-400">Step 4: HODL & Enjoy the Ride</h3>
+                            </div>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-yellow-400 mt-1">•</span>
+                                    <span>Diamond hands are appreciated but not required</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-yellow-400 mt-1">•</span>
+                                    <span>Take profits if you need to - we understand!</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-yellow-400 mt-1">•</span>
+                                    <span>Stay for the community, not just the gains</span>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-yellow-400 mt-1">•</span>
+                                    <span>Remember: it's about the friends we make along the way</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- How to Join -->
-                <div id="roadmap" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">7. HOW TO JOIN THE FUN</h2>
                     
-                    <div class="space-y-8">
-                        <div class="border-l-4 border-cyan-400 pl-6">
-                            <h3 class="text-lg font-semibold text-cyan-400 mb-2">Step 1: Get Some FROBRY 🪙</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• Set up a Solana wallet (Phantom, Solflare, etc.)</li>
-                                <li>• Get some SOL for transaction fees</li>
-                                <li>• Use Jupiter, Raydium, or other DEX to swap</li>
-                                <li>• Contract: Chjh9da4ZPtzpkQXkq4P<br />xaEm644LZ9BUoNGWiBoz1nWi</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="border-l-4 border-purple-400 pl-6">
-                            <h3 class="text-lg font-semibold text-purple-400 mb-2">Step 2: Join Our Community 👥</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• Follow us on Instagram for updates</li>
-                                <li>• Join our Telegram for daily chats</li>
-                                <li>• Check out our Discord for deeper discussions</li>
-                                <li>• Follow our Instagram for memes and fun content</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="border-l-4 border-green-400 pl-6">
-                            <h3 class="text-lg font-semibold text-green-400 mb-2">Step 3: Participate & Have Fun 🎉</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• Share memes and get rewarded</li>
-                                <li>• Participate in community votes</li>
-                                <li>• Join our weekly events and contests</li>
-                                <li>• Help spread good vibes and positivity</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="border-l-4 border-yellow-400 pl-6">
-                            <h3 class="text-lg font-semibold text-yellow-400 mb-2">Step 4: HODL & Enjoy the Ride 🚀</h3>
-                            <ul class="text-gray-300 space-y-1">
-                                <li>• Diamond hands are appreciated but not required</li>
-                                <li>• Take profits if you need to - we understand!</li>
-                                <li>• Stay for the community, not just the gains</li>
-                                <li>• Remember: it's about the friends we make along the way</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6">
-                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">New to Crypto?</h3>
-                        <p class="text-gray-300">
+                    <!-- New to Crypto -->
+                    <div class="content-card rounded-2xl p-8 mt-8 bg-blue-500/10 border-blue-400/30">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-4">New to Crypto?</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
                             No worries! Our community is beginner-friendly. Ask questions, learn together, 
                             and don't be afraid to start small. We're all here to help each other! 🤝
                         </p>
                     </div>
                 </div>
-                
-                <!-- Final Thoughts -->
-                <div id="conclusion" class="document-section rounded-lg p-8 mb-12">
-                    <h2 class="orbitron text-3xl font-bold text-cyan-400 mb-6">8. FINAL THOUGHTS</h2>
+            </div>
+        </section>
+        
+        <!-- Section 8: Final Thoughts -->
+        <section id="section8" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold orbitron mb-8 text-cyan-400 section-header">
+                        8. Final Thoughts
+                    </h2>
                     
-                    <div class="space-y-4 text-gray-300 leading-relaxed">
-                        <p>
+                    <div class="content-card rounded-2xl p-8 mb-8">
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
                             So there you have it - the honest truth about Frobry! We're not trying to revolutionize 
                             the world (yet), but we are trying to build something fun, authentic, and community-driven 
                             in a space that often takes itself too seriously.
                         </p>
-                        <p>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
                             Whether FROBRY goes to the moon, stays on Earth, or crashes into the ocean, we're committed 
                             to being transparent, having fun, and building genuine connections with our community. 
-                            In a world full of promises and hype, sometimes the best thing you can offer is honesty 
-                            and good vibes.
+                            In a world full of promises and hype, sometimes the best thing you can offer is honesty and good vibes.
                         </p>
-                        <p>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
                             If you decide to join us, welcome to the family! If not, that's totally cool too. 
                             We'll be here, making memes, learning about AI, and enjoying the wild ride that is crypto. 
                             Thanks for reading our "brainpaper" - we hope it made you smile! 😊
                         </p>
-                        
-                        <div class="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 border border-cyan-400/50 rounded-lg p-6 mt-8">
-                            <h3 class="text-xl font-semibold text-cyan-400 mb-3">Remember</h3>
-                            <p class="text-gray-300">
-                                Life's too short for bad vibes and boring investments. Whether you're here for the 
-                                memes, the community, or the potential gains, just remember to have fun and be kind 
-                                to each other. That's the real Frobry way! 🚀❤️
-                            </p>
-                        </div>
+                    </div>
+                    
+                    <!-- Remember -->
+                    <div class="content-card rounded-2xl p-8 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border-cyan-400/30 text-center">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Remember</h3>
+                        <p class="text-xl text-white leading-relaxed">
+                            Life's too short for bad vibes and boring investments. Whether you're here for the memes, 
+                            the community, or the potential gains, just remember to have fun and be kind to each other. 
+                            That's the real Frobry way! 🚀❤️
+                        </p>
                     </div>
                 </div>
-                
-                <!-- Download Section -->
-                <div class="text-center py-12">
-                    <button onclick="downloadPDF()" class="btn-primary px-12 py-4 rounded-full text-black font-bold text-lg orbitron">
-                        DOWNLOAD HONEST BRAINPAPER
-                    </button>
-                    <p class="text-gray-400 mt-4 text-sm">PDF version - same honest content, just portable! 📄</p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- CTA Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold orbitron mb-6 text-cyan-400">
+                    Ready to Join the AI Meme Revolution?
+                </h2>
+                <p class="text-xl md:text-2xl mb-12 text-gray-300 leading-relaxed">
+                    Don't miss out on the future of memecoins. Get your $FROBRY tokens now and be part of the community!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" class="btn-primary px-10 py-5 rounded-full text-xl font-bold glow-effect">
+                        🚀 Buy $FROBRY Now
+                    </a>
+                    <a href="https://t.me/frobry_announcements" target="_blank" class="btn-secondary px-10 py-5 rounded-full text-xl font-bold">
+                        📱 Join Community
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Footer -->
-    <footer class="py-12 border-t border-cyan-500/30">
+    <footer class="bg-black/50 backdrop-blur-md border-t border-white/10 py-12">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8">
                 <div class="flex items-center space-x-3 mb-6 md:mb-0">
-                    <div class="w-8 h-8">
-                        <img src="logo.png" alt="Frobry Logo" class="w-full h-full object-contain rounded" onerror="this.src=''; this.alt='Logo no disponible'; this.style.display='none';">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center glow-effect overflow-hidden">
+                        <img src="logo.png" alt="$FROBRY Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center" style="display: none;">
+                            <span class="text-black font-bold orbitron">F</span>
+                        </div>
                     </div>
-                    <span class="orbitron text-xl font-bold glow-text">frobry</span>
+                    <span class="text-2xl font-bold orbitron">$FROBRY</span>
                 </div>
                 
-                <div class="flex space-x-6">
-                    <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
-                    <a href="#brainpaper" class="hover:text-cyan-400 transition-colors">Brainpaper</a>
-                    <a href="#buy" class="hover:text-cyan-400 transition-colors">Buy</a>
-                    <a href="community.html" class="hover:text-cyan-400 transition-colors">Community</a>
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8 mb-6 md:mb-0">
+                    <a href="index.html" class="hover:text-cyan-400 transition-colors hover-glow">Home</a>
+                    <a href="#brainpaper" class="hover:text-cyan-400 transition-colors hover-glow">Brainpaper</a>
+                    <a href="https://pump.fun/coin/9ARYK4gCTLKdw2ionxunMGCrUJB7ovksMwGzHoEUpump" target="_blank" class="hover:text-cyan-400 transition-colors hover-glow">Buy</a>
+                    <a href="community.html" class="hover:text-cyan-400 transition-colors hover-glow">Community</a>
+                    <a href="contact.html" class="hover:text-cyan-400 transition-colors hover-glow">Contact</a>
                 </div>
                 
-                <div class="flex space-x-4 mt-6 md:mt-0">
+                <div class="flex space-x-4">
                     <a href="https://www.instagram.com/frobry.coin" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -754,182 +1221,154 @@ function joinCommunity(person) {
                 </div>
             </div>
             
-            <div class="text-center text-xs text-gray-500 leading-relaxed">
-                <p>*$FROBRY is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely used for memes purposes only. This token is not an investment vehicle and should not be purchased with the expectation of profit. Cryptocurrency investments are highly speculative and volatile. You may lose all of your investment. Past performance does not guarantee future results. Please do your own research and consult with a financial advisor before making any investment decisions. The creators of $FROBRY are not responsible for any financial losses incurred from trading this token.</p>
+            <div class="text-center text-xs text-gray-500 leading-relaxed mt-8 pt-8 border-t border-white/10">
+                <p>*$FROBRY is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely for memes purposes only. This token is not an investment vehicle and should not be purchased with the expectation of profit. Cryptocurrency investments are highly speculative and volatile. You may lose all of your investment. Past performance does not guarantee future results. Please do your own research and consult with a financial advisor before making any investment decisions. The creators of $FROBRY are not responsible for any financial losses incurred from trading this token.</p>
             </div>
         </div>
     </footer>
     
     <script>
-        // Matrix Rain Effect
-        function createMatrixRain() {
-            const matrixRain = document.getElementById('matrixRain');
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        // Mobile Menu Functions
+        function resizeNav() {
+            const navFullscreen = document.getElementById('nav-fullscreen');
+            const navOverlay = document.getElementById('nav-overlay');
             
-            for (let i = 0; i < 50; i++) {
-                const char = document.createElement('div');
-                char.className = 'matrix-char';
-                char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                char.style.left = Math.random() * 100 + '%';
-                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                char.style.animationDelay = Math.random() * 2 + 's';
-                matrixRain.appendChild(char);
+            if (navFullscreen) {
+                navFullscreen.style.height = window.innerHeight + 'px';
+            }
+            
+            if (navOverlay) {
+                const radius = Math.sqrt(Math.pow(window.innerHeight, 2) + Math.pow(window.innerWidth, 2));
+                const diameter = radius * 2;
+                navOverlay.style.width = diameter + 'px';
+                navOverlay.style.height = diameter + 'px';
+                navOverlay.style.marginTop = -radius + 'px';
+                navOverlay.style.marginLeft = -radius + 'px';
             }
         }
         
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
+        function initMobileNav() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navOverlay = document.getElementById('nav-overlay');
+            const navFullscreen = document.getElementById('nav-fullscreen');
+            
+            if (navToggle && navOverlay && navFullscreen) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('open');
+                    navOverlay.classList.toggle('open');
+                    navFullscreen.classList.toggle('open');
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = navFullscreen.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('open');
+                        navOverlay.classList.remove('open');
+                        navFullscreen.classList.remove('open');
+                    });
+                });
+                
+                // Close menu when clicking on the overlay
+                navOverlay.addEventListener('click', function() {
+                    navToggle.classList.remove('open');
+                    navOverlay.classList.remove('open');
+                    navFullscreen.classList.remove('open');
+                });
+            }
+            
+            window.addEventListener('resize', resizeNav);
+            resizeNav();
         }
         
         // Smooth Scrolling
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-        
-        // PDF Download Simulation
-        function downloadPDF() {
-            // Create a blob with sample PDF content
-            const pdfContent = `
-%PDF-1.4
-1 0 obj
-<<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-
-2 0 obj
-<<
-/Type /Pages
-/Kids [3 0 R]
-/Count 1
->>
-endobj
-
-3 0 obj
-<<
-/Type /Page
-/Parent 2 0 R
-/MediaBox [0 0 612 792]
-/Contents 4 0 R
->>
-endobj
-
-4 0 obj
-<<
-/Length 44
->>
-stream
-BT
-/F1 12 Tf
-72 720 Td
-(Frobry AI Network - Brainpaper) Tj
-ET
-endstream
-endobj
-
-xref
-0 5
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000206 00000 n 
-trailer
-<<
-/Size 5
-/Root 1 0 R
->>
-startxref
-300
-%%EOF
-            `;
-            
-            const blob = new Blob([pdfContent], { type: 'application/pdf' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Frobry_AI_Brainpaper_Technical_Documentation.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            // Show download notification
-            showNotification('PDF download started! Check your downloads folder.');
-        }
-        
-        // Notification System
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-24 right-6 bg-gradient-to-r from-cyan-600 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            // Slide in
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-            }, 100);
-            
-            // Slide out and remove
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
-        // Add smooth scrolling to all TOC links
-        document.querySelectorAll('.toc-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                scrollToSection(targetId);
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
         
-        // Initialize effects
-        createMatrixRain();
+        // Custom Cursor
+        const customCursor = document.getElementById('customCursor');
+        const cursorTrail = document.getElementById('cursorTrail');
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
         
-        // Add reading progress indicator
-        function updateReadingProgress() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             
-            let progressBar = document.getElementById('readingProgress');
-            if (!progressBar) {
-                progressBar = document.createElement('div');
-                progressBar.id = 'readingProgress';
-                progressBar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-50 transition-all duration-300';
-                document.body.appendChild(progressBar);
-            }
+            customCursor.style.left = mouseX + 'px';
+            customCursor.style.top = mouseY + 'px';
+        });
+        
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
             
-            progressBar.style.width = scrolled + '%';
+            cursorTrail.style.left = trailX + 'px';
+            cursorTrail.style.top = trailY + 'px';
+            
+            requestAnimationFrame(animateTrail);
         }
+        animateTrail();
         
-        window.addEventListener('scroll', updateReadingProgress);
+        // Hover effects
+        document.querySelectorAll('.content-card, .btn-primary, .btn-secondary, .hover-glow, a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                customCursor.classList.add('clickable');
+                customCursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                customCursor.classList.remove('clickable');
+                customCursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+        });
         
-        // Add click handlers for buttons
-        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
-            button.addEventListener('click', function() {
-                // Add click animation
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
+        // Initialize
+        initMobileNav();
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe content cards
+        document.querySelectorAll('.content-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-orb');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976f2d01d7c87f98',t:'MTc1NjUwMzMwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b6547f4306f0cf',t:'MTc1NzI0OTQwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
